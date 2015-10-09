@@ -258,7 +258,7 @@ public class DataConverter {
 			String flightNo;
 			String flightClass;
 			String aircraftType;
-			String rebate;
+			double rebate;
 			String pointsPerMile;
 			//Comparing the services
 			//Standard ticket
@@ -302,9 +302,9 @@ public class DataConverter {
 				flightNo= tokens[8];
 				flightClass= tokens[9];
 				aircraftType=tokens[10]; 
-				rebate=tokens[11];
+				rebate = Double.parseDouble(tokens[11]);
 				Product offSeasonTickets =  new OffSeasonTickets( productCode, type, seasonStartDate, seasonEndDate,  depAirportCode,  arrAirportCode,  depTime,
-						arrTime,flightNo,flightClass,aircraftType, rebate );
+						arrTime,flightNo,flightClass,aircraftType, rebate);
 				productList.add(offSeasonTickets);
 
 			}
@@ -341,7 +341,7 @@ public class DataConverter {
 			else if(type.equals("SI")){
 				String name = tokens[2];
 				String ageClass= tokens[3];
-				String costPerMile= tokens[4];
+				double costPerMile=Double.parseDouble(tokens[4]);
 				Product insurance = new Insurance( productCode,  type,  name,  ageClass, costPerMile); 
 				productList.add(insurance);
 
@@ -357,10 +357,9 @@ public class DataConverter {
 			//Refreshments
 			else if(type.equals("SR")){
 				String name= tokens[2];
-				String cost= tokens[3];
+				double cost=Double.parseDouble(tokens[3]);
 				Product refreshment = new Refreshment(productCode, type, name, cost);
 				productList.add(refreshment);
-
 			}
 
 		}
@@ -459,10 +458,14 @@ public class DataConverter {
 			}
 			// salepersonCode
 			String salePersonCode = tokens[2];
-			Person salePerson= null;
+			Person salePerson = null;
 			for(int z =0; z< peopleList.size(); z++){
 				if (peopleList.get(z).getPersonCode().equals(salePersonCode)){
 					salePerson= peopleList.get(z);
+					//System.out.println(salePerson.getFirstName()+", "+salePerson.getLastName());	
+				}
+				else if (salePersonCode.equals("online")){
+					salePerson = null;
 				}
 			}
 			//invoiceDate
@@ -482,6 +485,7 @@ public class DataConverter {
 					for(int s1 = 0 ; s1 < productList.size(); s1++ ){
 						if(productList.get(s1).getProductCode().equals(ticketCode)){
 							ArrayList<Passenger> passengerList = new ArrayList<Passenger>();
+							((Ticket) productList.get(s1)).setTicketCode(ticket[0]);
 							((Ticket) productList.get(s1)).setTravelDate(ticket[1]);
 							int numberOfPassenger= Integer.parseInt(ticket[2]);
 							((Ticket) productList.get(s1)).setNumberOfPassenger(numberOfPassenger);
@@ -501,7 +505,6 @@ public class DataConverter {
 										Passenger passenger= new Passenger(seatNumber, personCode, identityCode, age, nationality,address, firstName, lastName,phoneNumber );
 										passengerList.add(passenger);
 										//System.out.println(personCode);
-
 									}
 								}
 							}
@@ -550,7 +553,8 @@ public class DataConverter {
 				}				
 			}
 			//System.out.print("End");
-			String PNR= StandardUtils.generatePNR();
+	
+			String PNR = StandardUtils.generatePNR();
 			Invoice invoice = new Invoice(invoiceCode, invoiceDate, PNR,
 					listOfTicket, customer,
 					salePerson, listOfService); // Customer customer 

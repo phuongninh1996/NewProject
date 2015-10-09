@@ -3,6 +3,7 @@
 <com.airamerica.Insurance>
   <productCode>ff23</productCode>
   <type>SI</type>
+  <distance>0.0</distance>
   <quantity>0</quantity>
   <name>NationalInsurance</name>
   <ageClass>0-20</ageClass>
@@ -13,6 +14,7 @@
 <com.airamerica.StandardTickets>
   <productCode>1255</productCode>
   <type>TS</type>
+  <distance>0.0</distance>
   <flightClass>BC</flightClass>
   <departureAirport>
     <airportCode>LAX</airportCode>
@@ -47,20 +49,24 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Boeing757</aircraftType>
+  <TicketPrice>0.0</TicketPrice>
 </com.airamerica.StandardTickets>
 </standardTicket>
 <checkedbagage>
 <com.airamerica.CheckedBagage>
   <productCode>90fa</productCode>
   <type>SC</type>
+  <distance>0.0</distance>
   <quantity>0</quantity>
   <quantityBagage>0</quantityBagage>
+  <checkBagagePrice>0.0</checkBagagePrice>
 </com.airamerica.CheckedBagage>
 </checkedbagage>
 <standardTicket>
 <com.airamerica.StandardTickets>
   <productCode>1238</productCode>
   <type>TS</type>
+  <distance>0.0</distance>
   <flightClass>EC</flightClass>
   <departureAirport>
     <airportCode>LNK</airportCode>
@@ -95,12 +101,14 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>CRJ900</aircraftType>
+  <TicketPrice>0.0</TicketPrice>
 </com.airamerica.StandardTickets>
 </standardTicket>
 <special assistance>
 <com.airamerica.SpecialAssistance>
   <productCode>xer2</productCode>
   <type>SS</type>
+  <distance>0.0</distance>
   <quantity>0</quantity>
   <typeofService>WheelChair</typeofService>
 </com.airamerica.SpecialAssistance>
@@ -109,6 +117,7 @@
 <com.airamerica.OffSeasonTickets>
   <productCode>1240</productCode>
   <type>TO</type>
+  <distance>0.0</distance>
   <flightClass>EC</flightClass>
   <departureAirport>
     <airportCode>LNK</airportCode>
@@ -143,6 +152,7 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>CRJ900</aircraftType>
+  <TicketPrice>0.0</TicketPrice>
   <seasonStartDate>2015-10-07</seasonStartDate>
   <seasonEndDate>2016-01-29</seasonEndDate>
   <rebate>0.1</rebate>
@@ -152,6 +162,7 @@
 <com.airamerica.StandardTickets>
   <productCode>1241</productCode>
   <type>TS</type>
+  <distance>0.0</distance>
   <flightClass>EC</flightClass>
   <departureAirport>
     <airportCode>ATL</airportCode>
@@ -186,12 +197,14 @@
     <passengerFacilityFee>0.0</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>CRJ900</aircraftType>
+  <TicketPrice>0.0</TicketPrice>
 </com.airamerica.StandardTickets>
 </standardTicket>
 <insurance>
 <com.airamerica.Insurance>
   <productCode>ff25</productCode>
   <type>SI</type>
+  <distance>0.0</distance>
   <quantity>0</quantity>
   <name>Progressive</name>
   <ageClass>69-102</ageClass>
@@ -202,6 +215,7 @@
 <com.airamerica.OffSeasonTickets>
   <productCode>1243</productCode>
   <type>TO</type>
+  <distance>0.0</distance>
   <flightClass>EP</flightClass>
   <departureAirport>
     <airportCode>ATL</airportCode>
@@ -236,6 +250,7 @@
     <passengerFacilityFee>0.0</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>CRJ900</aircraftType>
+  <TicketPrice>0.0</TicketPrice>
   <seasonStartDate>2015-10-07</seasonStartDate>
   <seasonEndDate>2016-01-29</seasonEndDate>
   <rebate>0.2</rebate>
@@ -245,14 +260,17 @@
 <com.airamerica.CheckedBagage>
   <productCode>90fb</productCode>
   <type>SC</type>
+  <distance>0.0</distance>
   <quantity>0</quantity>
   <quantityBagage>0</quantityBagage>
+  <checkBagagePrice>0.0</checkBagagePrice>
 </com.airamerica.CheckedBagage>
 </checkedbagage>
 <standardTicket>
 <com.airamerica.StandardTickets>
   <productCode>1256</productCode>
   <type>TS</type>
+  <distance>0.0</distance>
   <flightClass>EP</flightClass>
   <departureAirport>
     <airportCode>LAX</airportCode>
@@ -287,12 +305,14 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Boeing757</aircraftType>
+  <TicketPrice>0.0</TicketPrice>
 </com.airamerica.StandardTickets>
 </standardTicket>
 <awardTicket>
 <com.airamerica.AwardTickets>
   <productCode>1257</productCode>
   <type>TA</type>
+  <distance>0.0</distance>
   <flightClass>EP</flightClass>
   <departureAirport>
     <airportCode>LAX</airportCode>
@@ -327,12 +347,14 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Boeing737-900ER</aircraftType>
+  <TicketPrice>0.0</TicketPrice>
 </com.airamerica.AwardTickets>
 </awardTicket>
 <standardTicket>
 <com.airamerica.StandardTickets>
   <productCode>1258</productCode>
   <type>TS</type>
+  <distance>0.0</distance>
   <flightClass>EC</flightClass>
   <departureAirport>
     <airportCode>ATL</airportCode>
@@ -367,21 +389,25 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Boeing737-900ER</aircraftType>
+  <TicketPrice>0.0</TicketPrice>
 </com.airamerica.StandardTickets>
 </standardTicket>
 <refreshment>
 <com.airamerica.Refreshment>
   <productCode>32f4</productCode>
   <type>SR</type>
+  <distance>0.0</distance>
   <quantity>0</quantity>
   <name>Italian Buffet</name>
-  <cost>18.00</cost>
+  <cost>18.0</cost>
+  <RefreshmentPrice>0.0</RefreshmentPrice>
 </com.airamerica.Refreshment>
 </refreshment>
 <awardTicket>
 <com.airamerica.AwardTickets>
   <productCode>1260</productCode>
   <type>TA</type>
+  <distance>0.0</distance>
   <flightClass>EP</flightClass>
   <departureAirport>
     <airportCode>ORD</airportCode>
@@ -416,12 +442,14 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Airbus-A319</aircraftType>
+  <TicketPrice>0.0</TicketPrice>
 </com.airamerica.AwardTickets>
 </awardTicket>
 <special assistance>
 <com.airamerica.SpecialAssistance>
   <productCode>xer4</productCode>
   <type>SS</type>
+  <distance>0.0</distance>
   <quantity>0</quantity>
   <typeofService>BabyBassinet</typeofService>
 </com.airamerica.SpecialAssistance>
@@ -430,6 +458,7 @@
 <com.airamerica.StandardTickets>
   <productCode>1261</productCode>
   <type>TS</type>
+  <distance>0.0</distance>
   <flightClass>BC</flightClass>
   <departureAirport>
     <airportCode>ORD</airportCode>
@@ -464,12 +493,14 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Airbus-A319</aircraftType>
+  <TicketPrice>0.0</TicketPrice>
 </com.airamerica.StandardTickets>
 </standardTicket>
 <insurance>
 <com.airamerica.Insurance>
   <productCode>ff24</productCode>
   <type>SI</type>
+  <distance>0.0</distance>
   <quantity>0</quantity>
   <name>Progressive</name>
   <ageClass>55-68</ageClass>
@@ -480,6 +511,7 @@
 <com.airamerica.OffSeasonTickets>
   <productCode>1262</productCode>
   <type>TO</type>
+  <distance>0.0</distance>
   <flightClass>BC</flightClass>
   <departureAirport>
     <airportCode>PHX</airportCode>
@@ -514,6 +546,7 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Airbus-A320</aircraftType>
+  <TicketPrice>0.0</TicketPrice>
   <seasonStartDate>2015-09-01</seasonStartDate>
   <seasonEndDate>2016-10-12</seasonEndDate>
   <rebate>0.15</rebate>
@@ -523,6 +556,7 @@
 <com.airamerica.OffSeasonTickets>
   <productCode>1263</productCode>
   <type>TO</type>
+  <distance>0.0</distance>
   <flightClass>EC</flightClass>
   <departureAirport>
     <airportCode>PHX</airportCode>
@@ -557,6 +591,7 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Airbus-A320</aircraftType>
+  <TicketPrice>0.0</TicketPrice>
   <seasonStartDate>2015-09-15</seasonStartDate>
   <seasonEndDate>2016-12-29</seasonEndDate>
   <rebate>0.25</rebate>
@@ -566,6 +601,7 @@
 <com.airamerica.Insurance>
   <productCode>fg23</productCode>
   <type>SI</type>
+  <distance>0.0</distance>
   <quantity>0</quantity>
   <name>Progressive</name>
   <ageClass>21-54</ageClass>
@@ -576,6 +612,7 @@
 <com.airamerica.Insurance>
   <productCode>fh23</productCode>
   <type>SI</type>
+  <distance>0.0</distance>
   <quantity>0</quantity>
   <name>NationalInsurance</name>
   <ageClass>21-60</ageClass>
@@ -586,14 +623,17 @@
 <com.airamerica.CheckedBagage>
   <productCode>90fc</productCode>
   <type>SC</type>
+  <distance>0.0</distance>
   <quantity>0</quantity>
   <quantityBagage>0</quantityBagage>
+  <checkBagagePrice>0.0</checkBagagePrice>
 </com.airamerica.CheckedBagage>
 </checkedbagage>
 <special assistance>
 <com.airamerica.SpecialAssistance>
   <productCode>xer1</productCode>
   <type>SS</type>
+  <distance>0.0</distance>
   <quantity>0</quantity>
   <typeofService>PrioritySeating</typeofService>
 </com.airamerica.SpecialAssistance>
@@ -602,9 +642,11 @@
 <com.airamerica.Refreshment>
   <productCode>31f4</productCode>
   <type>SR</type>
+  <distance>0.0</distance>
   <quantity>0</quantity>
   <name>Labbat-Beer-15oz</name>
-  <cost>04.50</cost>
+  <cost>4.5</cost>
+  <RefreshmentPrice>0.0</RefreshmentPrice>
 </com.airamerica.Refreshment>
 </refreshment>
 </products>

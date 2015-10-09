@@ -7,5 +7,7 @@ public class SpecialAssistance extends Services {
 		setType(type);
 		this.typeofService = typeofService;
 	}
-	
+	public String getSpecialAssistance(){
+		return typeofService;
+	}
 }

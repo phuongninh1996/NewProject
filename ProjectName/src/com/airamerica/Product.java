@@ -1,9 +1,20 @@
 package com.airamerica;
 
+import java.text.DecimalFormat;
+
+import com.airamerica.utils.Haversine;
+
 public class Product {
 	private String productCode;
 	private String type;	
+	private double distance;
 	
+	public double getDistance() {
+		return distance;
+	}
+	public void setDistance(double distance) {
+		this.distance = distance;
+	}
 	public String getProductCode() {
 		return productCode;
 	}
@@ -16,7 +27,9 @@ public class Product {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-
-
+	public  double airPortsDistance(AirPort departureCity, AirPort arrivalCity){
+		this.distance = Haversine.getMiles(departureCity.getLatitude(),departureCity.getLongtitude(),arrivalCity.getLatitude(),arrivalCity.getLongtitude());
+		this.distance = Double.parseDouble(new DecimalFormat(".##").format(distance));
+		return this.distance;
+	}
 }

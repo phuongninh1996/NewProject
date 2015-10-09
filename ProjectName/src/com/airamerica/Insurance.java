@@ -3,11 +3,11 @@ package com.airamerica;
 public class Insurance extends Services {
 	private String name;
 	private String ageClass;
-	private String costPerMile;
+	private double costPerMile;
 	private int quantityInsurance;
 	private String ticketCode;
 
-	public Insurance(String code, String type, String name, String ageClass, String costPerMiles){
+	public Insurance(String code, String type, String name, String ageClass, double costPerMiles){
 		setProductCode(code);
 		setType(type);
 		this.name =name;
@@ -31,11 +31,11 @@ public class Insurance extends Services {
 		this.ageClass = ageClass;
 	}
 
-	public String getCostPerMile() {
+	public double getCostPerMile() {
 		return costPerMile;
 	}
 
-	public void setCostPerMile(String costPerMile) {
+	public void setCostPerMile(double costPerMile) {
 		this.costPerMile = costPerMile;
 	}
 
@@ -53,6 +53,11 @@ public class Insurance extends Services {
 
 	public void setTicketCode(String ticketCode) {
 		this.ticketCode = ticketCode;
+	}
+	public double getInsurancePrice() {
+		double InsurancePrice = 0;
+		InsurancePrice = costPerMile * quantityInsurance * getDistance();
+		return InsurancePrice;
 	}
 }	
 

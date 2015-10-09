@@ -1,0 +1,28 @@
+package testDemo;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
+
+public class TestDemo {
+
+	public static void main(String[] args) {
+	        try
+	        {
+	        	String s = "15:55";
+		        SimpleDateFormat _24Hour = new SimpleDateFormat("HH:mm");
+		        SimpleDateFormat _12Hour = new SimpleDateFormat("hh:mm a");
+	            Date _24HourDt = _24Hour.parse(s);
+
+	            System.out.println("date : "+_12Hour.format(_24HourDt));
+	        }
+	        catch (ParseException ex)
+	        {
+	            System.out.println("Exception "+ex);
+	        }
+	}
+}

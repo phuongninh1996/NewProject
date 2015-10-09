@@ -1,0 +1,27 @@
+package com.airamerica;
+
+import com.airamerica.utils.Haversine;
+
+public class Product {
+	private String productCode;
+	private String type;	
+	
+	public String getProductCode() {
+		return productCode;
+	}
+	public void setProductCode(String productCode) {
+		this.productCode = productCode;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public  double airPortsDistance(AirPort departureCity, AirPort arrivalCity){
+		 double distance = Haversine.getMiles(departureCity.getLatitude(),departureCity.getLongtitude(),arrivalCity.getLatitude(),arrivalCity.getLongtitude());
+		return distance;
+		}
+
+
+}

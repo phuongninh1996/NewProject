@@ -8,3 +8,6 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 
 !ENTRY org.eclipse.core.net 1 0 2015-10-08 21:51:13.771
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2015-10-08 23:04:22.491
+!MESSAGE Can't handle class org.eclipse.jdt.internal.compiler.ast.BinaryExpression as parent of completion location.

@@ -2,9 +2,10 @@ package com.airamerica;
 
 public class Refreshment extends Services {
 	private String name;
-	private String cost;
+	private double cost;
 	private String personCode;
-	public Refreshment(String code, String type, String name, String cost){
+	double RefreshmentPrice = 0;
+	public Refreshment(String code, String type, String name, double cost){
 		setProductCode(code);
 		setType(type);
 		this.name= name;
@@ -25,12 +26,15 @@ public class Refreshment extends Services {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCost() {
+	public double getCost() {
 		return cost;
 	}
-	public void setCost(String cost) {
+	public void setCost(double cost) {
 		this.cost = cost;
 	}
-	
+	public double getRefreshmentPrice(){
+		RefreshmentPrice = super.getQuantity() * cost;
+		return RefreshmentPrice;
+	}
 }
 

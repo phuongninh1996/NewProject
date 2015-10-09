@@ -1,0 +1,206 @@
+package com.airamerica;
+import java.util.ArrayList;
+
+import org.joda.time.DateTime;
+
+import com.airamerica.utils.Haversine;
+
+public  abstract class  Ticket extends Product {
+	private String ticketCode;
+	private String travelDate;
+	private String flightClass;
+	private AirPort departureAirport;
+	private DateTime dateTime;
+	private String depTime;
+	private String arrTime;
+	private String flightNumber;
+	private int numberOfPassenger;
+	private AirPort arrivalAirport;
+	private String aircraftType;
+	private String[] listOfSeatNumber;
+	private ArrayList<Passenger> listOfPassengers;
+	private String ticketNote;
+	private Person personCode;
+	private String identity;
+	private String nationality;
+	private double TicketPrice;
+	
+	// List of setter and getter
+	
+	public int getNumberOfPassenger() {
+		return numberOfPassenger;
+	}
+	public void setNumberOfPassenger(int numberOfPassenger) {
+		this.numberOfPassenger = numberOfPassenger;
+	}
+
+	private String seatNumber;
+	public String getDepTime() {
+		return depTime;
+	}
+	public void setDepTime(String depTime) {
+		this.depTime = depTime;
+	}
+	public String getArrTime() {
+		return arrTime;
+	}
+	public void setArrTime(String arrTime) {
+		this.arrTime = arrTime;
+	}
+	public String getFlightNumber() {
+		return flightNumber;
+	}
+	public void setFlightNumber(String flightNumber) {
+		this.flightNumber = flightNumber;
+	}
+
+	public String getTravelDate() {
+		return travelDate;
+	}
+	public void setTravelDate(String travelDate) {
+		this.travelDate = travelDate;
+	}
+	public String getFlightClass() {
+		return flightClass;
+	}
+	public void setFlightClass(String flightClass) {
+		this.flightClass = flightClass;
+	}
+	public AirPort getDepartureAirport() {
+		return departureAirport;
+	}
+	public void setDepartureAirport(AirPort departureAirport) {
+		this.departureAirport = departureAirport;
+	}
+	public DateTime getDateTime() {
+		return dateTime;
+	}
+	public void setDateTime(DateTime dateTime) {
+		this.dateTime = dateTime;
+	}
+	public AirPort getArrivalAirport() {
+		return arrivalAirport;
+	}
+	public void setArrivalAirport(AirPort arrivalAirport) {
+		this.arrivalAirport = arrivalAirport;
+	}
+	public String getAircraftType() {
+		return aircraftType;
+	}
+	public void setAircraftType(String aircraftType) {
+		this.aircraftType = aircraftType;
+	}
+	/*public String getArrivalDateTime() {
+		return arrivalDateTime;
+	}
+	public void setArrivalDateTime(String arrivalDateTime) {
+		this.arrivalDateTime = arrivalDateTime;
+	}*/
+	public String[] getListOfSeatNumber() {
+		return listOfSeatNumber;
+	}
+	public void setListOfSeatNumber(String[] listOfSeatNumber) {
+		this.listOfSeatNumber = listOfSeatNumber;
+	}
+	public ArrayList<Passenger> getListOfPassengers() {
+		return listOfPassengers;
+	}
+	public void setListOfPassengers(ArrayList<Passenger> listOfPassengers) {
+		this.listOfPassengers = listOfPassengers;
+	}
+	public String getTicketNote() {
+		return ticketNote;
+	}
+	public void setTicketNote(String ticketNote) {
+		this.ticketNote = ticketNote;
+	}
+	public String getSeatNumber() {
+		return seatNumber;
+	}
+	public void setSeatNumber(String seatNumber) {
+		this.seatNumber = seatNumber;
+	}
+	public Person getPersonCode() {
+		return personCode;
+	}
+	public void setPersonCode(Person personCode) {
+		this.personCode = personCode;
+	}
+	public String getIdentity() {
+		return identity;
+	}
+	public void setIdentity(String identity) {
+		this.identity = identity;
+	}
+	public String getNationality() {
+		return nationality;
+	}
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
+	}
+
+	
+	
+/*	public Ticket(String travelDate, String flightClass, AirPort departureCity, DateTime dateTime,
+			AirPort arrivalCity, String aircraftType, String arrivalDateTime, String listOfSeatNumber,     
+			Passenger listOfPassenger, String ticketNote){
+		this.travelDate= travelDate  ;
+		this.flightClass = flightClass ;
+		this.departureCity= departureCity ;
+		this.dateTime= dateTime ;
+		this.arrivalCity= arrivalCity;
+		this.aircraftType= aircraftType;
+		this.arrivalDateTime = arrivalDateTime;
+		this.listOfSeatNumber= listOfSeatNumber;
+		this.listOfPassengers= listOfPassenger;
+		this.ticketNote= ticketNote;
+		
+	} */
+	
+	
+	
+	//Calculating part
+	
+	public abstract double getTicketPrice(double distance);
+	
+	
+	public void taxRate(){
+		
+	}
+		
+	
+	public  double segmentTax(int numberPassenger){
+		double segmentTax = 4*numberPassenger;
+		return segmentTax;
+	}
+		
+	public  double securityFee(int numberPassenger){
+		double securityFee = 5.60* numberPassenger;
+		return securityFee;
+		
+	}
+		
+	public double passengerFacilityFee(){
+		double passengerFee = 0;
+		return passengerFee;
+	}
+	public void totalTax(){
+		
+	}
+		
+	public void printTax(){
+		
+	}
+	public String getTicketCode() {
+		return ticketCode;
+	}
+	public void setTicketCode(String ticketCode) {
+		this.ticketCode = ticketCode;
+	}
+	public double getTicketPrice() {
+		return TicketPrice;
+	}
+	public void setTicketPrice(double ticketPrice) {
+		TicketPrice = ticketPrice;
+	}
+}

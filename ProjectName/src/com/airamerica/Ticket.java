@@ -1,11 +1,15 @@
 package com.airamerica;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.joda.time.DateTime;
 
 import com.airamerica.utils.Haversine;
 
 public  abstract class  Ticket extends Product {
+	private String ticketCode;
 	private String travelDate;
 	private String flightClass;
 	private AirPort departureAirport;
@@ -22,6 +26,7 @@ public  abstract class  Ticket extends Product {
 	private Person personCode;
 	private String identity;
 	private String nationality;
+	private double ticketPrice;
 	
 	// List of setter and getter
 	
@@ -158,23 +163,9 @@ public  abstract class  Ticket extends Product {
 	
 	
 	//Calculating part
-	public  double airPortsDistance(AirPort departureCity, AirPort arrivalCity){
-	 double distance = Haversine.getMiles(departureCity.getLatitude(),departureCity.getLongtitude(),arrivalCity.getLatitude(),arrivalCity.getLongtitude());
-	return distance;
-	}
-	public  double baseFair(double distance){
-	double baseFair = 0;	
-	if(flightClass.equals("EC")){
-		baseFair =   distance * 0.15;
-		}
-	else if(flightClass.equals("BC")){
-		baseFair =  distance * 0.15;
-	}
-	else if(flightClass.equals("EP")){
-		baseFair =  distance * 0.15;
-	}
-	return baseFair;
-}
+	
+	public abstract double getTicketPrice(double distance);
+	
 	
 	public void taxRate(){
 		
@@ -196,12 +187,32 @@ public  abstract class  Ticket extends Product {
 		double passengerFee = 0;
 		return passengerFee;
 	}
-	public void totalTax(){
+	public  void totalTax(){
 		
 	}
 		
 	public void printTax(){
 		
 	}
-	
+	public String getTicketCode() {
+		return ticketCode;
+	}
+	public void setTicketCode(String ticketCode) {
+		this.ticketCode = ticketCode;
+	}
+	public void convertDate(String day){
+    SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dddd");
+    try {
+		Date date2 = date.parse(day);
+	} catch (ParseException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	}
+	public double getTicketPrice() {
+		return ticketPrice;
+	}
+	public void setTicketPrice(double ticketPrice) {
+		this.ticketPrice = ticketPrice;
+	}
 }

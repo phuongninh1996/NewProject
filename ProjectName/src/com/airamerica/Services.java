@@ -22,5 +22,4 @@ public class Services extends Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
 }
