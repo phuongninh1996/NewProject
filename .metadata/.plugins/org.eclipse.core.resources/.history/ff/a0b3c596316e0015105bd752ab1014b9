@@ -32,7 +32,7 @@ public class InvoiceReport {
 																	  "DepartureCity and Time",
 																	  "ArrivalCity and Time", "Aircraft"));
 
-		//for(int z =0 ; z< invoice.getListOfTickets().size(); z++ ){
+		for(int z =0 ; z< invoice.getListOfTickets().size(); z++ ){
 
 		Ticket ticket = (Ticket) invoice.getListOfTickets().get(i);
 		
@@ -51,7 +51,7 @@ public class InvoiceReport {
 																ticket.getListOfPassengers().get(j).getAge(),ticket.getListOfPassengers().get(j).getSeatNumber()));
 			}
 		sb.append(String.format("      *%s\n", ticket.getTicketNote()));
-		//}
+		}
 		sb.append("------------------------------------------------------------------------------------------------------------\n");
 		return sb.toString();
 }
