@@ -120,8 +120,9 @@ public class InvoiceReport {
 			sb.append(String.format("%-10s %-75s \n",ticket.getTicketCode(),"StandardTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
 								+" ("+ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport())+" miles)"
 																 ));
-			sb.append(ticket.getDistance());
-			sb.append(ticket.getTicketPrice(ticket));
+			ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
+			sb.append(ticket.getTicketPrice(ticket.getDistance()));
+			
 		}
 		if(ticket.getType().equals("TO")){
 			sb.append(String.format("%-10s %-75s \n",ticket.getTicketCode(),"OffSeasonTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()

@@ -164,16 +164,16 @@ public  abstract class  Ticket extends Product {
 	
 	//Calculating part
 	
-	public double getTicketPrice(Ticket a) {
+	public double getTicketPrice(double distance) {
 		double rawPrice = 0;
 		if(flightClass.equals("EC")){
-			rawPrice = a.getDistance() * 0.15;
+			rawPrice = distance * 0.15;
 		}
 		if(flightClass.equals("BC")){
-			rawPrice = a.getDistance() * 0.5;
+			rawPrice = distance * 0.5;
 		}
 		if(flightClass.equals("EP")){
-			rawPrice = a.getDistance() * 0.2;
+			rawPrice = distance * 0.2;
 		}
 		ticketPrice = rawPrice * numberOfPassenger;
 		return ticketPrice;
