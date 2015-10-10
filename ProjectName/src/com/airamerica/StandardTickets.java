@@ -15,7 +15,7 @@ public class StandardTickets extends Ticket {
 	super.setFlightClass(flightClass);
 	super.setAircraftType(aircraftType); 
 	}
-	public double getTicketPrice(double distance){
+	public double getTicketPrice(Ticket a){
 		return getTicketPrice();
 	}
 }

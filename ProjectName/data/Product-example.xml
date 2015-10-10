@@ -49,7 +49,7 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Boeing757</aircraftType>
-  <TicketPrice>0.0</TicketPrice>
+  <ticketPrice>0.0</ticketPrice>
 </com.airamerica.StandardTickets>
 </standardTicket>
 <checkedbagage>
@@ -101,7 +101,7 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>CRJ900</aircraftType>
-  <TicketPrice>0.0</TicketPrice>
+  <ticketPrice>0.0</ticketPrice>
 </com.airamerica.StandardTickets>
 </standardTicket>
 <special assistance>
@@ -152,7 +152,7 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>CRJ900</aircraftType>
-  <TicketPrice>0.0</TicketPrice>
+  <ticketPrice>0.0</ticketPrice>
   <seasonStartDate>2015-10-07</seasonStartDate>
   <seasonEndDate>2016-01-29</seasonEndDate>
   <rebate>0.1</rebate>
@@ -197,7 +197,7 @@
     <passengerFacilityFee>0.0</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>CRJ900</aircraftType>
-  <TicketPrice>0.0</TicketPrice>
+  <ticketPrice>0.0</ticketPrice>
 </com.airamerica.StandardTickets>
 </standardTicket>
 <insurance>
@@ -250,7 +250,7 @@
     <passengerFacilityFee>0.0</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>CRJ900</aircraftType>
-  <TicketPrice>0.0</TicketPrice>
+  <ticketPrice>0.0</ticketPrice>
   <seasonStartDate>2015-10-07</seasonStartDate>
   <seasonEndDate>2016-01-29</seasonEndDate>
   <rebate>0.2</rebate>
@@ -305,7 +305,7 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Boeing757</aircraftType>
-  <TicketPrice>0.0</TicketPrice>
+  <ticketPrice>0.0</ticketPrice>
 </com.airamerica.StandardTickets>
 </standardTicket>
 <awardTicket>
@@ -347,7 +347,7 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Boeing737-900ER</aircraftType>
-  <TicketPrice>0.0</TicketPrice>
+  <ticketPrice>0.0</ticketPrice>
 </com.airamerica.AwardTickets>
 </awardTicket>
 <standardTicket>
@@ -389,7 +389,7 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Boeing737-900ER</aircraftType>
-  <TicketPrice>0.0</TicketPrice>
+  <ticketPrice>0.0</ticketPrice>
 </com.airamerica.StandardTickets>
 </standardTicket>
 <refreshment>
@@ -442,7 +442,7 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Airbus-A319</aircraftType>
-  <TicketPrice>0.0</TicketPrice>
+  <ticketPrice>0.0</ticketPrice>
 </com.airamerica.AwardTickets>
 </awardTicket>
 <special assistance>
@@ -493,7 +493,7 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Airbus-A319</aircraftType>
-  <TicketPrice>0.0</TicketPrice>
+  <ticketPrice>0.0</ticketPrice>
 </com.airamerica.StandardTickets>
 </standardTicket>
 <insurance>
@@ -546,7 +546,7 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Airbus-A320</aircraftType>
-  <TicketPrice>0.0</TicketPrice>
+  <ticketPrice>0.0</ticketPrice>
   <seasonStartDate>2015-09-01</seasonStartDate>
   <seasonEndDate>2016-10-12</seasonEndDate>
   <rebate>0.15</rebate>
@@ -591,7 +591,7 @@
     <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Airbus-A320</aircraftType>
-  <TicketPrice>0.0</TicketPrice>
+  <ticketPrice>0.0</ticketPrice>
   <seasonStartDate>2015-09-15</seasonStartDate>
   <seasonEndDate>2016-12-29</seasonEndDate>
   <rebate>0.25</rebate>
