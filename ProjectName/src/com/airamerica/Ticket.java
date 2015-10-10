@@ -164,7 +164,20 @@ public  abstract class  Ticket extends Product {
 	
 	//Calculating part
 	
-	public abstract double getTicketPrice(double distance);
+	public double getTicketPrice(Ticket a) {
+		double rawPrice = 0;
+		if(flightClass.equals("EC")){
+			rawPrice = a.getDistance() * 0.15;
+		}
+		if(flightClass.equals("BC")){
+			rawPrice = a.getDistance() * 0.5;
+		}
+		if(flightClass.equals("EP")){
+			rawPrice = a.getDistance() * 0.2;
+		}
+		ticketPrice = rawPrice * numberOfPassenger;
+		return ticketPrice;
+	}
 	
 	
 	public void taxRate(){
@@ -210,9 +223,12 @@ public  abstract class  Ticket extends Product {
 	}
 	}
 	public double getTicketPrice() {
-		return ticketPrice;
+		return this.ticketPrice;
 	}
 	public void setTicketPrice(double ticketPrice) {
 		this.ticketPrice = ticketPrice;
+	}
+	public double printPrice(){
+		return ticketPrice;
 	}
 }

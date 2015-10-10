@@ -15,24 +15,9 @@ public class StandardTickets extends Ticket {
 	super.setFlightClass(flightClass);
 	super.setAircraftType(aircraftType); 
 	}
-
-	@Override
-	public double getTicketPrice(double distance) {
-		double rawPrice = 0;
-		double ticketPrice = 0;
-		if(super.getFlightClass().equals("EC")){
-			rawPrice = distance * 0.15;
-		}
-		if(super.getFlightClass().equals("BC")){
-			rawPrice = distance * 0.5;
-		}
-		if(super.getFlightClass().equals("EP")){
-			rawPrice = distance * 0.2;
-		}
-		ticketPrice = rawPrice * super.getNumberOfPassenger();
-		return ticketPrice;
+	public double getTicketPrice(double distance){
+		return getTicketPrice();
 	}
-	
 }
 
 

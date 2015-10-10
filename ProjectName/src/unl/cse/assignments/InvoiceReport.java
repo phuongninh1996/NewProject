@@ -120,6 +120,8 @@ public class InvoiceReport {
 			sb.append(String.format("%-10s %-75s \n",ticket.getTicketCode(),"StandardTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
 								+" ("+ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport())+" miles)"
 																 ));
+			sb.append(ticket.getDistance());
+			sb.append(ticket.getTicketPrice(ticket));
 		}
 		if(ticket.getType().equals("TO")){
 			sb.append(String.format("%-10s %-75s \n",ticket.getTicketCode(),"OffSeasonTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
@@ -133,7 +135,6 @@ public class InvoiceReport {
 		}
 		//TODO: Add code for generating Cost Summary of all 
 		//products and services in an Invoice
-		System.out.println(ticket.getTicketPrice(i)+"Hello\n");
 		return sb.toString();
 		
 	}
