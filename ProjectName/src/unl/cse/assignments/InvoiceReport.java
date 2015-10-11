@@ -115,19 +115,19 @@ public class InvoiceReport {
 		StringBuilder sb = new StringBuilder();
 		sb.append("FARES AND SERVICES\n");
 		Ticket ticket = (Ticket) invoice.getListOfTickets().get(i);
+		ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
 		sb.append(String.format("%-10s %-75s %10s %10s %10s\n", "Code","Item","SubTotal","Tax","Total"));
 		if(ticket.getType().equals("TS")){
-			sb.append(String.format("%-10s %-75s \n",ticket.getTicketCode(),"StandardTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
-								+" ("+ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport())+" miles)"
-																 ));
-			ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
-			sb.append(ticket.getTicketPrice(ticket.getDistance()));
-			
+			sb.append(String.format("%-10s %-77s $%-10.2f\n",ticket.getTicketCode(),"StandardTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
+								+" ("+ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport())+" miles)",ticket.getTicketPrice(ticket.getDistance())));
+			System.out.println(ticket.getProductCode());
 		}
 		if(ticket.getType().equals("TO")){
 			sb.append(String.format("%-10s %-75s \n",ticket.getTicketCode(),"OffSeasonTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
 					+" ("+ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport())+" miles)"
 													 ));
+			ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
+			sb.append(ticket.getTicketPrice(ticket.getDistance()) + "\n");
 		}
 		if(ticket.getType().equals("TA")){
 			sb.append(String.format("%-10s %-75s \n",ticket.getTicketCode(),"AwardTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()

@@ -218,7 +218,6 @@ public  abstract class  Ticket extends Product {
     try {
 		Date date2 = date.parse(day);
 	} catch (ParseException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	}

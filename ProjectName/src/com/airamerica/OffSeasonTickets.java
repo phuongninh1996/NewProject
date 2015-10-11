@@ -51,26 +51,5 @@ public class OffSeasonTickets extends Ticket{
 	public void setRebate(double rebate) {
 		this.rebate = rebate;
 	}
-
-	@Override
-	public double getTicketPrice(double distance) {
-		double rawPrice = 0;
-		if(super.getFlightClass().equals("EC")){
-			rawPrice = distance * 0.15;
-		}
-		if(super.getFlightClass().equals("BC")){
-			rawPrice = distance * 0.5;
-		}
-		if(super.getFlightClass().equals("EP")){
-			rawPrice = distance * 0.2;
-		}
-		super.setTicketPrice(rawPrice * super.getNumberOfPassenger());
-		
-		return 0;
-	}
-	public double getTicketTax(){
-		super.getTicketPrice() *0.075+(4*super.getNumberOfPassenger()); 
-		
-	}
 }
 

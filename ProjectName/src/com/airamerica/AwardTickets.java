@@ -27,7 +27,7 @@ public class AwardTickets extends Ticket {;
 		this.pointsPerMile = pointsPerMile;
 	}
 	public double getTicketPrice(double distance){
-		return TicketPrice + 30.00;
+		return (getTicketPrice() + 30.00);
 	}
 
 }
