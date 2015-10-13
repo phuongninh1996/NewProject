@@ -33,6 +33,7 @@ public class InvoiceReport {
 		Ticket ticket = null; 
 		for(int z =0 ; z< invoice.getListOfTickets().size(); z++ ){
 			ticket = (Ticket) invoice.getListOfTickets().get(z);
+			System.out.print(ticket.getTravelDate() + "Hello\n");
 			try
 			{
 				String s = ticket.getTravelDate();
