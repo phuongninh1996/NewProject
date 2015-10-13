@@ -13,14 +13,20 @@ public class TestDemo {
 	public static void main(String[] args) {
 	        try
 	        {
-	        	String s = "15:55";
-	        	String s1 = "06:00";
-		        SimpleDateFormat date = new SimpleDateFormat("HH:mm");
-		        SimpleDateFormat date1 = new SimpleDateFormat("hh:mm a");
+	        	String s = "2016-02-12";
+	        	String s1 = "2015-10-07";
+	        	String s2 = "2016-01-29";
+		        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+		        //SimpleDateFormat date1 = new SimpleDateFormat("hh:mm a");
 	            Date date2 = date.parse(s);
 	            Date date3 = date.parse(s1);
-	            System.out.println("date : "+date1.format(date2));
-	            System.out.println("date : "+date1.format(date3));
+	            Date date4 = date.parse(s2);
+	            if(date2.before(date3) || date2.after(date4)){
+	            	System.out.println("No discounts are in effect.");
+	            }
+	            else {
+	            	System.out.println("Discounts are in effect.");
+	            }
 	        }
 	        catch (ParseException ex)
 	        {

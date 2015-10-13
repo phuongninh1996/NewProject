@@ -1,0 +1,13 @@
+package com.airamerica;
+
+public class Services extends Product {
+	private String personCode;
+	
+
+	public String getPersonCode() {
+		return personCode;
+	}
+	public void setPersonCode(String personCode) {
+		this.personCode = personCode;
+	}
+}
