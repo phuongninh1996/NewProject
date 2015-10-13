@@ -4,8 +4,9 @@ public class Insurance extends Services {
 	private String name;
 	private String ageClass;
 	private double costPerMile;
-	private int quantityInsurance;
+	private int quantity;
 	private String ticketCode;
+	double InsurancePrice;
 
 	public Insurance(String code, String type, String name, String ageClass, double costPerMiles){
 		setProductCode(code);
@@ -39,12 +40,12 @@ public class Insurance extends Services {
 		this.costPerMile = costPerMile;
 	}
 
-	public int getQuantityInsurance() {
-		return quantityInsurance;
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void setQuantityInsurance(int quantityInsurance) {
-		this.quantityInsurance = quantityInsurance;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public String getTicketCode() {
@@ -54,9 +55,8 @@ public class Insurance extends Services {
 	public void setTicketCode(String ticketCode) {
 		this.ticketCode = ticketCode;
 	}
-	public double getInsurancePrice() {
-		double InsurancePrice = 0;
-		InsurancePrice = costPerMile * quantityInsurance * getDistance();
+	public double getServicesPrice(double distance) {
+		InsurancePrice = costPerMile * super.getQuantity() * getDistance();
 		return InsurancePrice;
 	}
 }	

@@ -8,22 +8,18 @@ import java.util.Date;
 
 import com.airamerica.Customer;
 import com.airamerica.Invoice;
-import com.airamerica.Product;
+import com.airamerica.Services;
 import com.airamerica.Ticket;
 
 
 /* Assignment 3,5 and 6 (Project Phase-II,IV and V) */
 
 public class InvoiceReport {
-	int i = 0;
 	private String generateSummaryReport() {
 		StringBuilder sb = new StringBuilder();
-		
 		sb.append("Executive Summary Report\n");
 		sb.append("=========================\n");
-		
 		//TODO: Add code for generating summary of all Invoices
-		
 		return sb.toString();
 	}
 
@@ -32,51 +28,55 @@ public class InvoiceReport {
 		StringBuilder sb = new StringBuilder();
 		sb.append("FLIGHT INFORMATION\n");
 		sb.append(String.format("%-12s %-10s %-10s %-30s %-30s %-10s\n","Day, Date", "Flight", "Class",
-																	  "DepartureCity and Time",
-																	  "ArrivalCity and Time", "Aircraft"));
-
-		//for(int z =0 ; z< invoice.getListOfTickets().size(); z++ ){
-
-		Ticket ticket = (Ticket) invoice.getListOfTickets().get(i);
-		try
-        {
-        	String s = ticket.getTravelDate();
-	        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dddd");
-	        SimpleDateFormat date1 = new SimpleDateFormat("EEE,ddMMMyy");
-            Date date2 = date.parse(s);
-            sb.append(String.format("%-12s %-10s %-10s %-30s %-30s %-10s", date1.format(date2),
-					   ticket.getFlightNumber(), ticket.getFlightClass(),
-					   ticket.getDepartureAirport().getAddress().getCity()+","+ ticket.getDepartureAirport().getAddress().getState(),
-					   ticket.getArrivalAirport().getAddress().getCity()+","+ ticket.getArrivalAirport().getAddress().getState(),ticket.getAircraftType())+ "\n");
-        }
-        catch (ParseException ex)
-        {
-            System.out.println("Exception "+ex);
-        }
-		try
-        {
-        	String s = ticket.getDepTime();
-        	String s1 = ticket.getArrTime();
-	        SimpleDateFormat date = new SimpleDateFormat("HH:mm");
-	        SimpleDateFormat date1 = new SimpleDateFormat("hh:mma");
-            Date date2 = date.parse(s);
-            Date date3 = date.parse(s1);
-            sb.append(String.format("%49s %29s", "("+ticket.getDepartureAirport().getAirportCode()+") "+date1.format(date2),
-            									   "("+ticket.getArrivalAirport().getAirportCode()+") "+date1.format(date3))+"\n");
-        }
-        catch (ParseException ex)
-        {
-            System.out.println("Exception "+ex);
-        }
-		//System.out.println(invoice.getListOfTickets().get(i));
-		
-		sb.append(String.format("           %-30s %-10s %-15s\n","Traveller","Age","SeatNo"));
-		//System.out.print(ticket.getListOfPassengers().size() + "\n");
-		for(int j = 0; j < ticket.getListOfPassengers().size(); j++){
-		sb.append(String.format("           %-30s %-10s %-15s\n",ticket.getListOfPassengers().get(j).getFirstName()+","+ticket.getListOfPassengers().get(j).getLastName(),
-																ticket.getListOfPassengers().get(j).getAge(),ticket.getListOfPassengers().get(j).getSeatNumber()));
+				"DepartureCity and Time",
+				"ArrivalCity and Time", "Aircraft"));
+		Ticket ticket = null; 
+		for(int z =0 ; z< invoice.getListOfTickets().size(); z++ ){
+			ticket = (Ticket) invoice.getListOfTickets().get(z);
+			System.out.print(ticket.getTravelDate() + "Hello\n");
+			try
+			{
+				String s = ticket.getTravelDate();
+				SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dddd");
+				SimpleDateFormat date1 = new SimpleDateFormat("EEE,ddMMMyy");
+				Date date2 = date.parse(s);
+				sb.append(String.format("%-12s %-10s %-10s %-30s %-30s %-10s", date1.format(date2),
+						ticket.getFlightNumber(), ticket.getFlightClass(),
+						ticket.getDepartureAirport().getAddress().getCity()+","+ ticket.getDepartureAirport().getAddress().getState(),
+						ticket.getArrivalAirport().getAddress().getCity()+","+ ticket.getArrivalAirport().getAddress().getState(),ticket.getAircraftType())+ "\n");
 			}
-		sb.append(String.format("      *%s\n", ticket.getTicketNote()));
+			catch (ParseException ex)
+			{
+				System.out.println("Exception "+ex);
+			}
+			try
+			{
+				String s = ticket.getDepTime();
+				String s1 = ticket.getArrTime();
+				SimpleDateFormat date = new SimpleDateFormat("HH:mm");
+				SimpleDateFormat date1 = new SimpleDateFormat("hh:mma");
+				Date date2 = date.parse(s);
+				Date date3 = date.parse(s1);
+				sb.append(String.format("%49s %29s", "("+ticket.getDepartureAirport().getAirportCode()+") "+date1.format(date2),
+						"("+ticket.getArrivalAirport().getAirportCode()+") "+date1.format(date3))+"\n");
+			}
+			catch (ParseException ex)
+			{
+				System.out.println("Exception "+ex);
+			}
+			//System.out.println(invoice.getListOfTickets().get(i));
+
+			sb.append(String.format("           %-30s %-10s %-15s\n","Traveller","Age","SeatNo"));
+			//System.out.print(ticket.getListOfPassengers().size() + "\n");
+			for(int j = 0; j < ticket.getListOfPassengers().size(); j++){
+				sb.append(String.format("           %-30s %-10s %-15s\n",ticket.getListOfPassengers().get(j).getFirstName()+","+ticket.getListOfPassengers().get(j).getLastName(),
+						ticket.getListOfPassengers().get(j).getAge(),ticket.getListOfPassengers().get(j).getSeatNumber()));
+				//System.out.println("POSSIBLE WRONG: "+ticket.getListOfPassengers().get(j).getPersonCode());
+
+			}
+			sb.append(String.format("      *%s\n", ticket.getTicketNote()));
+		}
+
 		sb.append("------------------------------------------------------------------------------------------------------------\n");
 		return sb.toString();
 }
@@ -112,32 +112,40 @@ public class InvoiceReport {
 }
 	
 	private String getCostSummary(Invoice invoice) {
-		StringBuilder sb = new StringBuilder();
-		sb.append("FARES AND SERVICES\n");
-		Ticket ticket = (Ticket) invoice.getListOfTickets().get(i);
-		ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
-		sb.append(String.format("%-10s %-75s %10s %10s %10s\n", "Code","Item","SubTotal","Tax","Total"));
-		if(ticket.getType().equals("TS")){
-			sb.append(String.format("%-10s %-77s $%-10.2f\n",ticket.getTicketCode(),"StandardTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
-								+" ("+ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport())+" miles)",ticket.getTicketPrice(ticket.getDistance())));
-			System.out.println(ticket.getProductCode());
-		}
-		if(ticket.getType().equals("TO")){
-			sb.append(String.format("%-10s %-75s \n",ticket.getTicketCode(),"OffSeasonTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
-					+" ("+ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport())+" miles)"
-													 ));
-			ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
-			sb.append(ticket.getTicketPrice(ticket.getDistance()) + "\n");
-		}
-		if(ticket.getType().equals("TA")){
-			sb.append(String.format("%-10s %-75s \n",ticket.getTicketCode(),"AwardTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
-					+" ("+ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport())+" miles)"
-													 ));
-		}
 		//TODO: Add code for generating Cost Summary of all 
 		//products and services in an Invoice
+		StringBuilder sb = new StringBuilder();
+		sb.append("FARES AND SERVICES\n");
+		Customer customer = (Customer) invoice.getCustomer();
+		sb.append(String.format("%-10s %-75s %10s %10s %10s\n", "Code","Item","SubTotal","Tax","Total"));
+		Ticket ticket = null;
+		for (int j = 0; j < invoice.getListOfTickets().size(); j++){
+			ticket = (Ticket) invoice.getListOfTickets().get(j);
+			ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
+			if(ticket.getType().equals("TS")){
+				sb.append(String.format("%-10s %-77s $%-10.2f\n",ticket.getTicketCode(),"StandardTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
+									+" ("+ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport())+" miles)",ticket.getTicketPrice(ticket.getDistance())));
+				sb.append(String.format("           (%d units @ %.2f/units)\n",ticket.getNumberOfPassenger(),(ticket.getTicketPrice(ticket.getDistance()))/ticket.getNumberOfPassenger()));
+				
+			}
+			if(ticket.getType().equals("TO")){
+				sb.append(String.format("%-10s %-77s $%-10.2f\n",ticket.getTicketCode(),"OffSeasonTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
+						+" ("+ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport())+" miles)",ticket.getTicketPrice(ticket.getDistance())));
+				sb.append(String.format("           (%d units @ %.2f/units with $20.00 fee)\n",ticket.getNumberOfPassenger(),(ticket.getTicketPrice(ticket.getDistance()))/ticket.getNumberOfPassenger()));
+			}
+			if(ticket.getType().equals("TA")){
+				sb.append(String.format("%-10s %-77s $%-10.2f\n",ticket.getTicketCode(),"AwardTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
+						+" ("+ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport())+" miles)",ticket.getTicketPrice(ticket.getDistance())));
+			}
+		}
+		for(int z =0 ; z< invoice.getListOfService().size(); z++){
+			if (invoice.getListOfService().get(z).getProductCode().charAt(0) == '3'){
+			sb.append(String.format("%-10sSpecial Assistance for [%s,%s] (%s)\n",invoice.getListOfService().get(z).getProductCode(),customer.getPrimaryContact().getFirstName(),
+					customer.getPrimaryContact().getLastName(),
+					invoice.getListOfService().get(z).getServicesPrice(ticket.getDistance())));
+			}
+		}
 		return sb.toString();
-		
 	}
 
 	public String generateDetailReport(ArrayList<Invoice> invoiceList ) {
@@ -146,7 +154,7 @@ public class InvoiceReport {
 	sb.append("==================================================\n");
 	/* TODO: Loop through all invoices and call the getTravelSummary() and 
 	getCostSummary() for each invoice*/
-	for (i = 0; i < DataConverter.invoiceList.size(); i++){
+	for (int i = 0; i < DataConverter.invoiceList.size(); i++){
 		Invoice invoice = invoiceList.get(i);
 		sb.append("Invoice "+ invoice.getInvoiceCode() +"\n");
 		sb.append("------------------------------------------------------------------------------------------------------------\n");

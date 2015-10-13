@@ -32,8 +32,8 @@ public class Refreshment extends Services {
 	public void setCost(double cost) {
 		this.cost = cost;
 	}
-	public double getRefreshmentPrice(){
-		RefreshmentPrice = super.getQuantity() * cost;
+	public double getServicesPrice(){
+		RefreshmentPrice = (super.getQuantity() * cost)-((super.getQuantity() * cost)*0.05);
 		return RefreshmentPrice;
 	}
 }

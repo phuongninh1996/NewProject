@@ -32,8 +32,7 @@ public class DataConverter {
 	public static ArrayList<Customer> customerList = new ArrayList<Customer>();
 	public static ArrayList<AirPort> airPortList = new ArrayList<AirPort>();
 	public static ArrayList<Invoice> invoiceList = new ArrayList<Invoice>();
-	public static ArrayList<Product> listOfTicket = new ArrayList<Product>(); 
-	public static ArrayList<Product> listOfService = new ArrayList<Product>(); 
+	
 	//Getter and Setter
 	public static ArrayList<Invoice> getInvoiceList() {
 		return invoiceList;
@@ -440,6 +439,8 @@ public class DataConverter {
 
 		// Create Strings to hold PersonCode, firstName, lastName...
 		while(s.hasNext()){
+			ArrayList<Product> listOfTicket = new ArrayList<Product>(); 
+			ArrayList<Product> listOfService = new ArrayList<Product>(); 
 			//System.out.println("count");
 
 			String line= s.nextLine();
@@ -474,9 +475,8 @@ public class DataConverter {
 			String stringProduct[] = tokens[4].split(",");
 
 			for(int a = 0; a<stringProduct.length; a++){
-				//System.out.println("produc"+stringProduct.length);
-				//.out.println(stringProduct[a]);
 				String eachPartOfProduct[] = stringProduct[a].split(":");//This is used to check if the product has more than 3 attributes
+				// get ticket
 				if(eachPartOfProduct.length>=8){
 					//System.out.println("count" );
 					String ticket[]= stringProduct[a].split(":");
@@ -485,14 +485,18 @@ public class DataConverter {
 					for(int s1 = 0 ; s1 < productList.size(); s1++ ){
 						if(productList.get(s1).getProductCode().equals(ticketCode)){
 							ArrayList<Passenger> passengerList = new ArrayList<Passenger>();
-							((Ticket) productList.get(s1)).setTicketCode(ticket[0]);
-							((Ticket) productList.get(s1)).setTravelDate(ticket[1]);
+							Ticket productReplace;
+							productReplace = (Ticket) productList.get(s1).makeCopy();
+							productReplace.setTicketCode(ticket[0]);
+							productReplace.setTravelDate(ticket[1]);
+							productReplace.setType(productList.get(s1).getType());
 							int numberOfPassenger= Integer.parseInt(ticket[2]);
-							((Ticket) productList.get(s1)).setNumberOfPassenger(numberOfPassenger);
+							productReplace.setNumberOfPassenger(numberOfPassenger);
 							for(int i = 0; i < numberOfPassenger; i++){
 								seatNumberArray[i] = ticket[3+i*5];
 								String seatNumber = ticket[3+i*5];
 								String personCode = ticket[4+i*5];
+
 								String identityCode = ticket[5+i*5];
 								String age = ticket[6+i*5];
 								String nationality = ticket[7+i*5];
@@ -504,16 +508,17 @@ public class DataConverter {
 										String phoneNumber= peopleList.get(z).getPhoneNumber();
 										Passenger passenger= new Passenger(seatNumber, personCode, identityCode, age, nationality,address, firstName, lastName,phoneNumber );
 										passengerList.add(passenger);
+
 										//System.out.println(personCode);
 									}
 								}
 							}
 							//System.out.println(passengerList.size());
 							String ticketNote = ticket[ticket.length-1] ;
-							((Ticket)productList.get(s1)).setTicketNote(ticketNote);
-							((Ticket)productList.get(s1)).setListOfPassengers(passengerList);
-							((Ticket)productList.get(s1)).setListOfSeatNumber(seatNumberArray);
-							listOfTicket.add(productList.get(s1));
+							productReplace.setTicketNote(ticketNote);
+							productReplace.setListOfPassengers(passengerList);
+							productReplace.setListOfSeatNumber(seatNumberArray);
+							listOfTicket.add(productReplace);
 							//System.out.println(listOfTicket.size());
 							//Ticket s2 = (Ticket) listOfTicket.get(0);
 							//System.out.println(passengerList.size());
@@ -525,14 +530,18 @@ public class DataConverter {
 				else if(eachPartOfProduct.length==2){
 					String checkedBaggage[]=stringProduct[a].split(":");//In this checked baggage will include checked baggage and refreshment
 					String productCode = checkedBaggage[0];
+					
 					for(int s1 = 0 ; s1 < productList.size(); s1++ ){
-						if(productList.get(s1).getProductCode().equals(productCode) && checkedBaggage[1].length()<2){
+						if(productList.get(s1).getProductCode().equals(productCode) && checkedBaggage[1].length()==1){
 							int quantity = Integer.parseInt(checkedBaggage[1]);
 							((Services) productList.get(s1)).setQuantity(quantity);
 							listOfService.add(productList.get(s1));
+							//System.out.println(checkedBaggage[1] + "Hello.");
 						}
-						else if (productList.get(s1).getProductCode().equals(productCode) && checkedBaggage[1].length() ==5){
+						else if (productList.get(s1).getProductCode().equals(productCode) && checkedBaggage[1].length() <= 5){
 							((Services) productList.get(s1)).setPersonCode(checkedBaggage[1]);
+							listOfService.add(productList.get(s1));
+							//System.out.println(checkedBaggage[1] + "Hello.");
 						}
 					}
 				}

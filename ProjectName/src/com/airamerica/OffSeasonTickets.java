@@ -51,5 +51,16 @@ public class OffSeasonTickets extends Ticket{
 	public void setRebate(double rebate) {
 		this.rebate = rebate;
 	}
+	public double getTicketPrice(double distance){
+		double ticketPrice = 0;
+		if(super.convertDate(super.getTravelDate()).before(super.convertDate(seasonStartDate)) || 
+		   super.convertDate(super.getTravelDate()).after(super.convertDate(seasonEndDate))){
+			ticketPrice = super.getTicketPrice(distance) + 20.00;
+		}
+		else {
+			ticketPrice = (super.getTicketPrice(distance) - (super.getTicketPrice(distance) * rebate)) + 20.00;
+			}
+		return ticketPrice;
+	}
 }
 

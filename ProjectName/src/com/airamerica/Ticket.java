@@ -8,7 +8,7 @@ import org.joda.time.DateTime;
 
 import com.airamerica.utils.Haversine;
 
-public  abstract class  Ticket extends Product {
+public  class  Ticket extends Product {
 	private String ticketCode;
 	private String travelDate;
 	private String flightClass;
@@ -27,9 +27,10 @@ public  abstract class  Ticket extends Product {
 	private String identity;
 	private String nationality;
 	private double ticketPrice;
+	private String type;
 	
 	// List of setter and getter
-	
+
 	public int getNumberOfPassenger() {
 		return numberOfPassenger;
 	}
@@ -213,13 +214,16 @@ public  abstract class  Ticket extends Product {
 	public void setTicketCode(String ticketCode) {
 		this.ticketCode = ticketCode;
 	}
-	public void convertDate(String day){
-    SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dddd");
+	public Date convertDate(String day){
+		Date date2 = null;
+		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
     try {
-		Date date2 = date.parse(day);
+		date2 = date.parse(day);
+		
 	} catch (ParseException e) {
 		e.printStackTrace();
 	}
+    return date2;
 	}
 	public double getTicketPrice() {
 		return this.ticketPrice;
@@ -229,5 +233,31 @@ public  abstract class  Ticket extends Product {
 	}
 	public double printPrice(){
 		return ticketPrice;
+	}
+	@Override
+	public Product makeCopy()
+	{
+		Ticket t = new Ticket();
+		t.arrivalAirport = this.arrivalAirport;
+		t.ticketCode = this.ticketCode;
+		t.travelDate = this.travelDate;
+		t.flightClass = this.flightClass;
+		t.departureAirport= this.departureAirport;
+		t.dateTime= this.dateTime;
+		t.depTime= this.depTime;
+		t.arrTime= this.arrTime;
+		t.flightNumber= this.flightNumber;
+		t.numberOfPassenger= this.numberOfPassenger;
+		t.arrivalAirport= this.arrivalAirport;
+		t.aircraftType= this.aircraftType;
+		t.listOfSeatNumber= this.listOfSeatNumber;
+		t.listOfPassengers= this.listOfPassengers;
+		t.ticketNote= this.ticketCode;
+		t.personCode = this.personCode;
+		t.identity= this.identity;
+		t.nationality= this.identity;
+		t.ticketPrice = this.ticketPrice;
+		t.type = this.type;
+		return t;
 	}
 }
