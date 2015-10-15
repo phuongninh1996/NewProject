@@ -70,17 +70,17 @@ public class Insurance extends Services {
 		insurancePrice = costPerMile * quantity * distance;
 		return insurancePrice;
 	}
+	@Override
+	public double getTaxes() {
+		insuranceTax = insurancePrice * 0.04;
+		return insuranceTax;
+	}
 
 	@Override
 	public double getCost() {
 		return 0;
 	}
 
-	@Override
-	public double getTaxes() {
-		insuranceTax = insurancePrice * 0.04;
-		return insuranceTax;
-	}
 
 	@Override
 	public String getAge() {

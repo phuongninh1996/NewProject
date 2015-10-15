@@ -538,7 +538,7 @@ public class DataConverter {
 					for(int s1 = 0 ; s1 < productList.size(); s1++ ){
 						if(productList.get(s1).getProductCode().equals(productCodeInsurance)){
 							int quantity = Integer.parseInt(insuranceArray[1]);
-							((Services)productList.get(s1)).setQuantity(quantity);
+							((Insurance)productList.get(s1)).setQuantity(quantity);
 							String ticketCodeInsurance = insuranceArray[2]; 
 							((Insurance)productList.get(s1)).setTicketCode(ticketCodeInsurance);
 							listOfService.add((Services) productList.get(s1));
@@ -546,7 +546,6 @@ public class DataConverter {
 					}
 				}				
 			}
-			//System.out.print("End");
 	
 			String PNR = StandardUtils.generatePNR();
 			Invoice invoice = new Invoice(invoiceCode, invoiceDate, PNR,

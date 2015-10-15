@@ -1,6 +1,9 @@
 package unl.cse.assignments;
 import unl.cse.assignments.DataConverter;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -62,14 +65,11 @@ public class InvoiceReport {
 			{
 				System.out.println("Exception "+ex);
 			}
-			//System.out.println(invoice.getListOfTickets().get(i));
 
 			sb.append(String.format("           %-30s %-10s %-15s\n","Traveller","Age","SeatNo"));
-			//System.out.print(ticket.getListOfPassengers().size() + "\n");
 			for(int j = 0; j < ticket.getListOfPassengers().size(); j++){
 				sb.append(String.format("           %-30s %-10s %-15s\n",ticket.getListOfPassengers().get(j).getFirstName()+","+ticket.getListOfPassengers().get(j).getLastName(),
 						ticket.getListOfPassengers().get(j).getAge(),ticket.getListOfPassengers().get(j).getSeatNumber()));
-				//System.out.println("POSSIBLE WRONG: "+ticket.getListOfPassengers().get(j).getPersonCode());
 
 			}
 			sb.append(String.format("      *%s\n", ticket.getTicketNote()));
@@ -140,10 +140,11 @@ public class InvoiceReport {
 				sb.append(String.format("%-10s %s %s %.2f %s %.2f %s %.2f\n",ticket.getTicketCode(),"AwardTicket ("+ticket.getFlightClass() +") "
 						+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
 						+" ("+distance+" miles)","$",ticketPrice,"$",tax,"$",total));
-				sb.append((String.format("           (%d units @ %d reward miless/unit with $30.0 ReedemptionFee)\n",ticket.getNumberOfPassenger(),ticket.getAwardMile(distance))));
+				sb.append((String.format("           (%d units @ %d reward miles/unit with $30.0 ReedemptionFee)\n",ticket.getNumberOfPassenger(),ticket.getAwardMile(distance))));
 			}
 		}
 		for(int z =0 ; z< invoice.getListOfService().size(); z++){
+			double distance = ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
 			String temp = invoice.getListOfService().get(z).getServiceType();
 			String code = invoice.getListOfService().get(z).getProductCode();
 			int quantity = invoice.getListOfService().get(z).getQuantity();
@@ -161,7 +162,7 @@ public class InvoiceReport {
 			}
 			if (temp.equals("SI")){
 				sb.append(String.format("%-10s Insurance %s (%s) %s %.2f %s %.2f %s %.2f\n",code, serviceName,invoice.getListOfService().get(z).getAge()
-						,"$",invoice.getListOfService().get(z).getInsurancePrice(ticket.getDistance()),"$",taxes,"$",total));
+						,"$",invoice.getListOfService().get(z).getInsurancePrice(distance),"$",taxes,"$",total));
 				sb.append(String.format("           (%d units @ %.2f perMile x %.2f miles)\n", quantity, invoice.getListOfService().get(z).costPerMile(), ticket.getDistance()));
 			}
 			for(int j = 0; j < ticket.getListOfPassengers().size(); j++){
@@ -173,7 +174,7 @@ public class InvoiceReport {
 				}
 			}
 		}
-		sb.append(String.format("%120s", "=====================================\n"));
+		sb.append(String.format("%125s", "=====================================\n"));
 		return sb.toString();
 	}
 
@@ -215,7 +216,16 @@ public class InvoiceReport {
 		InvoiceReport ir = new InvoiceReport();
 		String summary = ir.generateSummaryReport();
 		String details = ir.generateDetailReport(DataConverter.invoiceList);
-				
+		PrintWriter w = null;
+		try {
+			w = new PrintWriter(new File("data/invoice.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			w.write(summary);
+			w.write(details);
+			w.close();
 		System.out.println(summary);
 		System.out.println("\n\n");
 		System.out.println(details);
