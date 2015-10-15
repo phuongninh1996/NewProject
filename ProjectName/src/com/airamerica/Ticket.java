@@ -3,7 +3,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
+import com.airamerica.AirPort;
 import org.joda.time.DateTime;
 
 import com.airamerica.utils.Haversine;
@@ -193,6 +193,7 @@ public abstract class Ticket extends Product {
 		return ticketPrice;
 	}
 	public abstract int getAwardMile(double distance);
+	public abstract double getRebate();
 	public abstract double getTax();
 	public abstract double Total();
 }

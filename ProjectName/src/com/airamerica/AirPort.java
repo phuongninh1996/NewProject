@@ -6,7 +6,7 @@ public class AirPort {
 	private Address address;
 	private double latitude;
 	private double longtitude;
-	public static double passengerFacilityFee;
+	private double passengerFacilityFee;
 	
 	public AirPort(String airportCode, String airportName, Address address, double latitude, double longtitude, double passengerFacilityFee){
 		this.airportCode = airportCode;
@@ -14,7 +14,7 @@ public class AirPort {
 		this.address = address;
 		this.latitude= latitude;
 		this.longtitude=longtitude;
-		AirPort.passengerFacilityFee = passengerFacilityFee;
+		this.passengerFacilityFee = passengerFacilityFee;
 	}
 
 	public String getAirportCode() {
@@ -57,12 +57,12 @@ public class AirPort {
 		this.longtitude = longtitude;
 	}
 
-	public static double getPassengerFacilityFee() {
+	public double getPassengerFacilityFee() {
 		return passengerFacilityFee;
 	}
 
 	public void setPassengerFacilityFee(double passengerFacilityFee) {
-		AirPort.passengerFacilityFee = passengerFacilityFee;
+		this.passengerFacilityFee = passengerFacilityFee;
 	}
 	
 	

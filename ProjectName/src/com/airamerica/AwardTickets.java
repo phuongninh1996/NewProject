@@ -32,7 +32,6 @@ public class AwardTickets extends Ticket {
 		awardTicketPrice = 30.00;
 		return awardTicketPrice;
 	}
-
 	@Override
 	public int getAwardMile(double distance) {
 		return (int)(super.getTicketPrice(distance) * pointsPerMile)/super.getNumberOfPassenger();
@@ -43,12 +42,18 @@ public class AwardTickets extends Ticket {
 
 	@Override
 	public double getTax() {
-		awardTicketTax = (awardTicketPrice * 0.075) + (9.6 * super.getNumberOfPassenger()) + (AirPort.getPassengerFacilityFee() * super.getNumberOfPassenger());
+		awardTicketTax = (awardTicketPrice * 0.075) + (9.6 * super.getNumberOfPassenger());
 		return awardTicketTax;
 	}
 	@Override
 	public double Total() {
 		return awardTicketTax + awardTicketPrice;
+	}
+
+	@Override
+	public double getRebate() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

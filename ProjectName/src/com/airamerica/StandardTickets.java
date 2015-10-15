@@ -1,6 +1,5 @@
 package com.airamerica;
 
-
 public class StandardTickets extends Ticket {
 	private double standardTicketPrice;
 	private double standardTicketTax;
@@ -26,15 +25,20 @@ public class StandardTickets extends Ticket {
 	public int getAwardMile(double distance) {
 		return 0;
 	}
+	//Error on this method, cannot call AirPort.getPassengerFacilityFee(), it has to be changed to Static in order to call this function
 	@Override
 	public double getTax() {
-		System.out.println (AirPort.getPassengerFacilityFee() + "Hello");
-		standardTicketTax = (standardTicketPrice * 0.075) + (9.6 * super.getNumberOfPassenger()) + (AirPort.getPassengerFacilityFee() * super.getNumberOfPassenger());
+		standardTicketTax = (standardTicketPrice * 0.075) + (9.6 * super.getNumberOfPassenger());
 		return standardTicketTax;
 	}
 	@Override
 	public double Total() {
 		return standardTicketTax + standardTicketPrice;
+	}
+	@Override
+	public double getRebate() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
 

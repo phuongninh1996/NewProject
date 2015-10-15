@@ -32,6 +32,7 @@
     </address>
     <latitude>34.05</latitude>
     <longtitude>118.25</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </departureAirport>
   <depTime>09:30</depTime>
   <arrTime>15:55</arrTime>
@@ -49,6 +50,7 @@
     </address>
     <latitude>33.75</latitude>
     <longtitude>84.38333333333334</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Boeing757</aircraftType>
   <ticketPrice>0.0</ticketPrice>
@@ -88,6 +90,7 @@
     </address>
     <latitude>40.833333333333336</latitude>
     <longtitude>96.66666666666667</longtitude>
+    <passengerFacilityFee>0.0</passengerFacilityFee>
   </departureAirport>
   <depTime>06:00</depTime>
   <arrTime>9:08</arrTime>
@@ -105,6 +108,7 @@
     </address>
     <latitude>33.75</latitude>
     <longtitude>84.38333333333334</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>CRJ900</aircraftType>
   <ticketPrice>0.0</ticketPrice>
@@ -141,6 +145,7 @@
     </address>
     <latitude>40.833333333333336</latitude>
     <longtitude>96.66666666666667</longtitude>
+    <passengerFacilityFee>0.0</passengerFacilityFee>
   </departureAirport>
   <depTime>06:00</depTime>
   <arrTime>9:08</arrTime>
@@ -158,6 +163,7 @@
     </address>
     <latitude>33.75</latitude>
     <longtitude>84.38333333333334</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>CRJ900</aircraftType>
   <ticketPrice>0.0</ticketPrice>
@@ -187,6 +193,7 @@
     </address>
     <latitude>33.75</latitude>
     <longtitude>84.38333333333334</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </departureAirport>
   <depTime>21:15</depTime>
   <arrTime>22:42</arrTime>
@@ -204,6 +211,7 @@
     </address>
     <latitude>40.833333333333336</latitude>
     <longtitude>96.66666666666667</longtitude>
+    <passengerFacilityFee>0.0</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>CRJ900</aircraftType>
   <ticketPrice>0.0</ticketPrice>
@@ -244,6 +252,7 @@
     </address>
     <latitude>33.75</latitude>
     <longtitude>84.38333333333334</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </departureAirport>
   <depTime>21:15</depTime>
   <arrTime>22:42</arrTime>
@@ -261,6 +270,7 @@
     </address>
     <latitude>40.833333333333336</latitude>
     <longtitude>96.66666666666667</longtitude>
+    <passengerFacilityFee>0.0</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>CRJ900</aircraftType>
   <ticketPrice>0.0</ticketPrice>
@@ -303,6 +313,7 @@
     </address>
     <latitude>34.05</latitude>
     <longtitude>118.25</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </departureAirport>
   <depTime>09:30</depTime>
   <arrTime>15:55</arrTime>
@@ -320,6 +331,7 @@
     </address>
     <latitude>33.75</latitude>
     <longtitude>84.38333333333334</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Boeing757</aircraftType>
   <ticketPrice>0.0</ticketPrice>
@@ -346,6 +358,7 @@
     </address>
     <latitude>34.05</latitude>
     <longtitude>118.25</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </departureAirport>
   <depTime>10:15</depTime>
   <arrTime>18:13</arrTime>
@@ -363,6 +376,7 @@
     </address>
     <latitude>33.75</latitude>
     <longtitude>84.38333333333334</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Boeing737-900ER</aircraftType>
   <ticketPrice>0.0</ticketPrice>
@@ -390,6 +404,7 @@
     </address>
     <latitude>33.75</latitude>
     <longtitude>84.38333333333334</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </departureAirport>
   <depTime>10:50</depTime>
   <arrTime>12:50</arrTime>
@@ -407,6 +422,7 @@
     </address>
     <latitude>34.05</latitude>
     <longtitude>118.25</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Boeing737-900ER</aircraftType>
   <ticketPrice>0.0</ticketPrice>
@@ -446,6 +462,7 @@
     </address>
     <latitude>41.833333333333336</latitude>
     <longtitude>87.61666666666666</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </departureAirport>
   <depTime>09:09</depTime>
   <arrTime>11:06</arrTime>
@@ -463,6 +480,7 @@
     </address>
     <latitude>33.483333333333334</latitude>
     <longtitude>112.06666666666666</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Airbus-A319</aircraftType>
   <ticketPrice>0.0</ticketPrice>
@@ -500,6 +518,7 @@
     </address>
     <latitude>41.833333333333336</latitude>
     <longtitude>87.61666666666666</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </departureAirport>
   <depTime>09:09</depTime>
   <arrTime>11:06</arrTime>
@@ -517,6 +536,7 @@
     </address>
     <latitude>33.483333333333334</latitude>
     <longtitude>112.06666666666666</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Airbus-A319</aircraftType>
   <ticketPrice>0.0</ticketPrice>
@@ -557,6 +577,7 @@
     </address>
     <latitude>33.483333333333334</latitude>
     <longtitude>112.06666666666666</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </departureAirport>
   <depTime>14:24</depTime>
   <arrTime>19:56</arrTime>
@@ -574,6 +595,7 @@
     </address>
     <latitude>41.833333333333336</latitude>
     <longtitude>87.61666666666666</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Airbus-A320</aircraftType>
   <ticketPrice>0.0</ticketPrice>
@@ -603,6 +625,7 @@
     </address>
     <latitude>33.483333333333334</latitude>
     <longtitude>112.06666666666666</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </departureAirport>
   <depTime>07:10</depTime>
   <arrTime>12:42</arrTime>
@@ -620,6 +643,7 @@
     </address>
     <latitude>41.833333333333336</latitude>
     <longtitude>87.61666666666666</longtitude>
+    <passengerFacilityFee>4.5</passengerFacilityFee>
   </arrivalAirport>
   <aircraftType>Airbus-A320</aircraftType>
   <ticketPrice>0.0</ticketPrice>

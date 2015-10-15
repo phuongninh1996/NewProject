@@ -11,6 +11,7 @@
   </address>
   <latitude>40.833333333333336</latitude>
   <longtitude>96.66666666666667</longtitude>
+  <passengerFacilityFee>0.0</passengerFacilityFee>
 </airPort>
 <airPort>
   <airportCode>ORD</airportCode>
@@ -24,6 +25,7 @@
   </address>
   <latitude>41.833333333333336</latitude>
   <longtitude>87.61666666666666</longtitude>
+  <passengerFacilityFee>4.5</passengerFacilityFee>
 </airPort>
 <airPort>
   <airportCode>MDW</airportCode>
@@ -37,6 +39,7 @@
   </address>
   <latitude>41.833333333333336</latitude>
   <longtitude>87.61666666666666</longtitude>
+  <passengerFacilityFee>4.5</passengerFacilityFee>
 </airPort>
 <airPort>
   <airportCode>JFK</airportCode>
@@ -50,6 +53,7 @@
   </address>
   <latitude>40.78333333333333</latitude>
   <longtitude>73.96666666666667</longtitude>
+  <passengerFacilityFee>4.5</passengerFacilityFee>
 </airPort>
 <airPort>
   <airportCode>PHX</airportCode>
@@ -63,6 +67,7 @@
   </address>
   <latitude>33.483333333333334</latitude>
   <longtitude>112.06666666666666</longtitude>
+  <passengerFacilityFee>4.5</passengerFacilityFee>
 </airPort>
 <airPort>
   <airportCode>LAX</airportCode>
@@ -76,6 +81,7 @@
   </address>
   <latitude>34.05</latitude>
   <longtitude>118.25</longtitude>
+  <passengerFacilityFee>4.5</passengerFacilityFee>
 </airPort>
 <airPort>
   <airportCode>SJC</airportCode>
@@ -89,6 +95,7 @@
   </address>
   <latitude>37.333333333333336</latitude>
   <longtitude>121.88333333333334</longtitude>
+  <passengerFacilityFee>4.5</passengerFacilityFee>
 </airPort>
 <airPort>
   <airportCode>ATL</airportCode>
@@ -102,6 +109,7 @@
   </address>
   <latitude>33.75</latitude>
   <longtitude>84.38333333333334</longtitude>
+  <passengerFacilityFee>4.5</passengerFacilityFee>
 </airPort>
 <airPort>
   <airportCode>DEN</airportCode>
@@ -115,5 +123,20 @@
   </address>
   <latitude>39.75</latitude>
   <longtitude>105.0</longtitude>
+  <passengerFacilityFee>4.5</passengerFacilityFee>
+</airPort>
+<airPort>
+  <airportCode>MSP</airportCode>
+  <airportName>Minneapolis Saint Paul International Airport</airportName>
+  <address>
+    <street>4300 Glumack Drive</street>
+    <city>St. Paul</city>
+    <state>MN</state>
+    <zip>55111</zip>
+    <country>USA</country>
+  </address>
+  <latitude>44.983333333333334</latitude>
+  <longtitude>93.23333333333333</longtitude>
+  <passengerFacilityFee>4.5</passengerFacilityFee>
 </airPort>
 </airPorts>

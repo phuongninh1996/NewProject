@@ -49,7 +49,7 @@ public class OffSeasonTickets extends Ticket{
 		this.seasonEndDate = seasonEndDate;
 	}
 
-
+	@Override
 	public double getRebate() {
 		return rebate;
 	}
@@ -76,7 +76,7 @@ public class OffSeasonTickets extends Ticket{
 
 	@Override
 	public double getTax() {
-		offseasonTicketTax = (offseasonTicketPrice * 0.075) + (9.6 * super.getNumberOfPassenger()) + (AirPort.getPassengerFacilityFee() * super.getNumberOfPassenger());
+		offseasonTicketTax = (offseasonTicketPrice * 0.075) + (9.6 * super.getNumberOfPassenger());
 		return offseasonTicketTax;
 	}
 	@Override
