@@ -2,10 +2,12 @@ package com.airamerica;
 
 //import org.joda.time.DateTime;
 
-public class AwardTickets extends Ticket {;
-	private String pointsPerMile;
+public class AwardTickets extends Ticket {
+	private double pointsPerMile;
+	private double awardTicketPrice;
+	private double awardTicketTax;
 // Constructor
-	public AwardTickets(String code, String type, AirPort departureAirport, AirPort arrivalAirport,String depTime,String arrTime,String flightNo,String flightClass,String aircraftType, String pointsPerMiles){
+	public AwardTickets(String code, String type, AirPort departureAirport, AirPort arrivalAirport,String depTime,String arrTime,String flightNo,String flightClass,String aircraftType, double pointsPerMile){
 	setProductCode(code);
 	setType(type);
 	super.setDepartureAirport(departureAirport);
@@ -19,15 +21,34 @@ public class AwardTickets extends Ticket {;
 	}
 	
 // Getter and Setter
-	public String getPointsPerMile() {
+	public double getPointsPerMile() {
 		return pointsPerMile;
 	}
 
-	public void setPointsPerMile(String pointsPerMile) {
+	public void setPointsPerMile(double pointsPerMile) {
 		this.pointsPerMile = pointsPerMile;
 	}
 	public double getTicketPrice(double distance){
-		return (super.getTicketPrice(distance) + 30.00);
+		awardTicketPrice = 30.00;
+		return awardTicketPrice;
 	}
 
+	@Override
+	public int getAwardMile(double distance) {
+		return (int)(super.getTicketPrice(distance) * pointsPerMile)/super.getNumberOfPassenger();
+	}
+
+	public void setAwardMile(int awardMile) {
+	}
+
+	@Override
+	public double getTax() {
+		awardTicketTax = (awardTicketPrice * 0.075) + (9.6 * super.getNumberOfPassenger()) + (AirPort.getPassengerFacilityFee() * super.getNumberOfPassenger());
+		return awardTicketTax;
+	}
+	@Override
+	public double Total() {
+		return awardTicketTax + awardTicketPrice;
+	}
+	
 }

@@ -1,6 +1,6 @@
 package com.airamerica;
 
-public class Services extends Product {
+public abstract class Services extends Product {
 	private int quantity;
 	private String personCode;
 
@@ -17,9 +17,16 @@ public class Services extends Product {
 	public void setPersonCode(String personCode) {
 		this.personCode = personCode;
 	}
-
-
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	public abstract double getServicesPrice();
+	public abstract String getServicesName();
+	public abstract double getCost();
+	public abstract double getInsurancePrice (double disance);
+	public abstract double getTaxes();
+	public abstract String getAge();
+	public abstract String getServiceType();
+	public abstract double costPerMile();
+	public abstract double Total();
 }

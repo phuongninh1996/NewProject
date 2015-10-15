@@ -10,11 +10,11 @@ public class Invoice {
 	private Customer Customer;
 	private Person Salesperson;
 	private String InvoiceCode;
-	private ArrayList<Product> ListOfService;
+	private ArrayList<Services> ListOfService;
 
 	public Invoice(String code, String date, String PNR,
 			ArrayList<Product> listOfTickets, Customer customer,
-			Person salesperson, ArrayList<Product> listOfService) {
+			Person salesperson, ArrayList<Services> listOfService) {
 		InvoiceCode = code;
 		Date = date;
 		this.PNR = PNR;
@@ -72,11 +72,11 @@ public class Invoice {
 		this.InvoiceCode = personCode;
 	}
 
-	public ArrayList<Product> getListOfService() {
+	public ArrayList<Services> getListOfService() {
 		return ListOfService;
 	}
 
-	public void setListOfService(ArrayList<Product> listOfService) {
+	public void setListOfService(ArrayList<Services> listOfService) {
 		ListOfService = listOfService;
 	}
 	}

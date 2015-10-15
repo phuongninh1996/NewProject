@@ -8,7 +8,6 @@ import java.util.Date;
 
 import com.airamerica.Customer;
 import com.airamerica.Invoice;
-import com.airamerica.Services;
 import com.airamerica.Ticket;
 
 
@@ -95,7 +94,7 @@ public class InvoiceReport {
 		}
 		sb.append("       "+customer.getPrimaryContact().getFirstName()+","+ customer.getPrimaryContact().getLastName() +"\n");
 		sb.append("       "+customer.getPrimaryContact().getAddress().getStreet()+"\n");
-		sb.append("      "+customer.getPrimaryContact().getAddress().getCity()+" "
+		sb.append("       "+customer.getPrimaryContact().getAddress().getCity()+" "
 						   +customer.getPrimaryContact().getAddress().getState()+" "
 						   +customer.getPrimaryContact().getAddress().getZip()+" "
 						   +customer.getPrimaryContact().getAddress().getCountry()+"\n");
@@ -115,35 +114,66 @@ public class InvoiceReport {
 		//products and services in an Invoice
 		StringBuilder sb = new StringBuilder();
 		sb.append("FARES AND SERVICES\n");
-		Customer customer = (Customer) invoice.getCustomer();
 		sb.append(String.format("%-10s %-75s %10s %10s %10s\n", "Code","Item","SubTotal","Tax","Total"));
 		Ticket ticket = null;
 		for (int j = 0; j < invoice.getListOfTickets().size(); j++){
 			ticket = (Ticket) invoice.getListOfTickets().get(j);
-			ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
+			double distance = ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
+			double ticketUnitPrice = ticket.getTicketPrice(ticket.getDistance())/ticket.getNumberOfPassenger();
+			double ticketPrice = ticket.getTicketPrice(ticket.getDistance());
+			double tax = ticket.getTax();
+			double total = ticket.Total();
 			if(ticket.getType().equals("TS")){
-				sb.append(String.format("%-10s %-77s $%-10.2f\n",ticket.getTicketCode(),"StandardTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
-									+" ("+ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport())+" miles)",ticket.getTicketPrice(ticket.getDistance())));
-				sb.append(String.format("           (%d units @ %.2f/units)\n",ticket.getNumberOfPassenger(),(ticket.getTicketPrice(ticket.getDistance()))/ticket.getNumberOfPassenger()));
+				sb.append(String.format("%-10s %s %s %.2f %s %.2f %s %.2f\n",ticket.getTicketCode(),"StandardTicket ("+ticket.getFlightClass() +") "
+						+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
+						+" ("+distance+" miles)","$",ticketPrice,"$",tax,"$",total));
+				sb.append(String.format("           (%d units @ $%.2f/units)\n",ticket.getNumberOfPassenger(),ticketUnitPrice));
 				
 			}
 			if(ticket.getType().equals("TO")){
-				sb.append(String.format("%-10s %-77s $%-10.2f\n",ticket.getTicketCode(),"OffSeasonTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
-						+" ("+ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport())+" miles)",ticket.getTicketPrice(ticket.getDistance())));
-				sb.append(String.format("           (%d units @ %.2f/units with $20.00 fee)\n",ticket.getNumberOfPassenger(),(ticket.getTicketPrice(ticket.getDistance()))/ticket.getNumberOfPassenger()));
+				sb.append(String.format("%-10s %s %s %.2f %s %.2f %s %.2f\n",ticket.getTicketCode(),"OffSeasonTicket ("+ticket.getFlightClass() +") "
+						+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
+						+" ("+distance+" miles)","$",ticketPrice,"$",tax,"$",total));
+				sb.append(String.format("           (%d units @ $%.2f/units with $20.00 fee)\n",ticket.getNumberOfPassenger(),ticketUnitPrice));
 			}
 			if(ticket.getType().equals("TA")){
-				sb.append(String.format("%-10s %-77s $%-10.2f\n",ticket.getTicketCode(),"AwardTicket ("+ticket.getFlightClass() +") "+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
-						+" ("+ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport())+" miles)",ticket.getTicketPrice(ticket.getDistance())));
+				sb.append(String.format("%-10s %s %s %.2f %s %.2f %s %.2f\n",ticket.getTicketCode(),"AwardTicket ("+ticket.getFlightClass() +") "
+						+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
+						+" ("+distance+" miles)","$",ticketPrice,"$",tax,"$",total));
+				sb.append((String.format("           (%d units @ %d reward miless/unit with $30.0 ReedemptionFee)\n",ticket.getNumberOfPassenger(),ticket.getAwardMile(distance))));
 			}
 		}
 		for(int z =0 ; z< invoice.getListOfService().size(); z++){
-			if (invoice.getListOfService().get(z).getProductCode().charAt(0) == '3'){
-			sb.append(String.format("%-10sSpecial Assistance for [%s,%s] (%s)\n",invoice.getListOfService().get(z).getProductCode(),customer.getPrimaryContact().getFirstName(),
-					customer.getPrimaryContact().getLastName(),
-					invoice.getListOfService().get(z).getServicesPrice(ticket.getDistance())));
+			String temp = invoice.getListOfService().get(z).getServiceType();
+			String code = invoice.getListOfService().get(z).getProductCode();
+			int quantity = invoice.getListOfService().get(z).getQuantity();
+			double servicePrice = invoice.getListOfService().get(z).getServicesPrice();
+			String serviceName = invoice.getListOfService().get(z).getServicesName();
+			double taxes = invoice.getListOfService().get(z).getTaxes();
+			double total = invoice.getListOfService().get(z).Total();
+			if (temp.equals("SR")){
+				sb.append(String.format("%-10s %s (%d units @ %.2f/unit with 5%s %s %.2f %s %.2f %s %.2f\n",code,serviceName,quantity,
+										invoice.getListOfService().get(z).getCost(),"% off)","$",servicePrice,"$",taxes,"$",total));
+			}
+			if (temp.equals("SC")){
+				sb.append(String.format("%-10s Baggage (%d units @ $25.00 for 1st and $35.00 onwards) %s %.2f %s %.2f %s %.2f\n"
+											,code, quantity,"$",servicePrice,"$",taxes,"$",total));
+			}
+			if (temp.equals("SI")){
+				sb.append(String.format("%-10s Insurance %s (%s) %s %.2f %s %.2f %s %.2f\n",code, serviceName,invoice.getListOfService().get(z).getAge()
+						,"$",invoice.getListOfService().get(z).getInsurancePrice(ticket.getDistance()),"$",taxes,"$",total));
+				sb.append(String.format("           (%d units @ %.2f perMile x %.2f miles)\n", quantity, invoice.getListOfService().get(z).costPerMile(), ticket.getDistance()));
+			}
+			for(int j = 0; j < ticket.getListOfPassengers().size(); j++){
+			if (temp.equals("SS")){
+				
+			sb.append(String.format("%-10s Special Assistance for [%s,%s] (%s%s %s %.2f %s %.2f %s %.2f\n",invoice.getListOfService().get(z).getProductCode(),
+					ticket.getListOfPassengers().get(j).getFirstName(),
+					ticket.getListOfPassengers().get(j).getLastName(), serviceName,")","$",servicePrice,"$",taxes,"$",total));
+				}
 			}
 		}
+		sb.append(String.format("%120s", "=====================================\n"));
 		return sb.toString();
 	}
 

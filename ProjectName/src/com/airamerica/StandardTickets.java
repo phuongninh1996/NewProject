@@ -2,7 +2,9 @@ package com.airamerica;
 
 
 public class StandardTickets extends Ticket {
-
+	private double standardTicketPrice;
+	private double standardTicketTax;
+	
 	
 	public StandardTickets(String code, String type, AirPort departureAirport, AirPort arrivalAirport,String depTime,String arrTime,String flightNo,String flightClass,String aircraftType){
 	setProductCode(code);
@@ -15,8 +17,24 @@ public class StandardTickets extends Ticket {
 	super.setFlightClass(flightClass);
 	super.setAircraftType(aircraftType); 
 	}
-	public double getTicketPrice(double distance){
-		return super.getTicketPrice(distance);
+	@Override
+	public double getTicketPrice(double distance) {
+		standardTicketPrice = super.getTicketPrice(distance);
+		return standardTicketPrice;
+	}
+	@Override
+	public int getAwardMile(double distance) {
+		return 0;
+	}
+	@Override
+	public double getTax() {
+		System.out.println (AirPort.getPassengerFacilityFee() + "Hello");
+		standardTicketTax = (standardTicketPrice * 0.075) + (9.6 * super.getNumberOfPassenger()) + (AirPort.getPassengerFacilityFee() * super.getNumberOfPassenger());
+		return standardTicketTax;
+	}
+	@Override
+	public double Total() {
+		return standardTicketTax + standardTicketPrice;
 	}
 }
 

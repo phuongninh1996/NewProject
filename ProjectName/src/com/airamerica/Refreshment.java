@@ -4,7 +4,8 @@ public class Refreshment extends Services {
 	private String name;
 	private double cost;
 	private String personCode;
-	double RefreshmentPrice = 0;
+	private double refreshmentPrice;
+	private double refreshmentTax;
 	public Refreshment(String code, String type, String name, double cost){
 		setProductCode(code);
 		setType(type);
@@ -26,6 +27,7 @@ public class Refreshment extends Services {
 	public void setName(String name) {
 		this.name = name;
 	}
+	@Override
 	public double getCost() {
 		return cost;
 	}
@@ -33,8 +35,48 @@ public class Refreshment extends Services {
 		this.cost = cost;
 	}
 	public double getServicesPrice(){
-		RefreshmentPrice = (super.getQuantity() * cost)-((super.getQuantity() * cost)*0.05);
-		return RefreshmentPrice;
+		refreshmentPrice = (super.getQuantity() * cost)-((super.getQuantity() * cost)*0.05);
+		return refreshmentPrice;
+	}
+
+	@Override
+	public String getServicesName() {
+		return name;
+	}
+
+	@Override
+	public double getInsurancePrice(double distance) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getTaxes() {
+		refreshmentTax = refreshmentPrice * 0.04;
+		return refreshmentTax;
+	}
+
+	@Override
+	public String getAge() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getServiceType() {
+		// TODO Auto-generated method stub
+		return super.getType();
+	}
+
+	@Override
+	public double costPerMile() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double Total() {
+		return refreshmentPrice + refreshmentTax;
 	}
 }
 

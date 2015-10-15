@@ -7,7 +7,44 @@ public class SpecialAssistance extends Services {
 		setType(type);
 		this.typeofService = typeofService;
 	}
-	public String getSpecialAssistance(){
+	public String getSpecialAssistance(double distance){
 		return typeofService;
+	}
+	@Override
+	public double getServicesPrice() {
+		return 0;
+	}
+	@Override
+	public String getServicesName() {
+		return typeofService;
+	}
+	@Override
+	public double getInsurancePrice(double distance) {
+		return 0;
+	}
+	@Override
+	public double getCost() {
+		return 0;
+	}
+	@Override
+	public double getTaxes() {
+		return 0;
+	}
+	@Override
+	public String getAge() {
+		return null;
+	}
+	@Override
+	public String getServiceType() {
+		String a = super.getType();
+		return a;
+	}
+	@Override
+	public double costPerMile() {
+		return 0;
+	}
+	@Override
+	public double Total() {
+		return 0;
 	}
 }
