@@ -28,7 +28,11 @@ public class OffSeasonTickets extends Ticket{
 	super.setAircraftType(aircraftType); 
 	}
 	
- // Getter and Setter
+ public OffSeasonTickets() {
+	// TODO Auto-generated constructor stub
+}
+
+// Getter and Setter
 	public String getSeasonStartDate() {
 		return seasonStartDate;
 	}
@@ -85,5 +89,29 @@ public class OffSeasonTickets extends Ticket{
 	public OffSeasonTickets clone(String code, String type, String seasonStartDate, String seasonEndDate,  AirPort departureAirport, AirPort arrivalAirport,String depTime,String arrTime,String flightNo,String flightClass,String aircraftType,double rebate){
 		return new OffSeasonTickets (this.getProductCode(), this.getType(), this.seasonStartDate, this.seasonEndDate, this.getDepartureAirport(), this.getArrivalAirport(), this.getDepTime(), this.getArrTime(), this.getFlightNumber(), this.getFlightClass(),this.getAircraftType(), this.rebate); 
 		}
+	public Product makeCopy()
+	{
+		Ticket t = new OffSeasonTickets();
+		t.setArrivalAirport(super.getArrivalAirport());
+		t.setTicketCode(super.getTicketCode());
+		t.setTravelDate(super.getTravelDate());
+		t.setFlightClass(super.getFlightClass());
+		t.setDepartureAirport(super.getDepartureAirport());
+		t.setDateTime(super.getDateTime());
+		t.setDepTime(super.getDepTime());
+		t.setArrTime(super.getArrTime());
+		t.setFlightNumber(super.getFlightNumber());
+		t.setNumberOfPassenger(super.getNumberOfPassenger());
+		t.setArrivalAirport(super.getArrivalAirport());
+		t.setAircraftType(super.getAircraftType());
+		t.setListOfSeatNumber(super.getListOfSeatNumber());
+		t.setListOfPassengers(super.getListOfPassengers());
+		t.setTicketNote(super.getTicketCode());
+		t.setPersonCode(super.getPersonCode());
+		t.setIdentity(super.getIdentity());
+		t.setNationality(super.getIdentity());
+		t.setTicketPrice(super.getTicketPrice());
+		return t;
+	}
 }
 

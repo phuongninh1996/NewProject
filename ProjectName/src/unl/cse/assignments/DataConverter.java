@@ -18,7 +18,9 @@ import java.util.ArrayList;
 
 
 
+
 import org.joda.time.DateTime;
+
 
 
 
@@ -32,7 +34,7 @@ public class DataConverter {
 	public static ArrayList<Customer> customerList = new ArrayList<Customer>();
 	public static ArrayList<AirPort> airPortList = new ArrayList<AirPort>();
 	public static ArrayList<Invoice> invoiceList = new ArrayList<Invoice>();
-	
+
 	//Getter and Setter
 	public static ArrayList<Invoice> getInvoiceList() {
 		return invoiceList;
@@ -61,7 +63,7 @@ public class DataConverter {
 
 
 
-	
+
 
 
 
@@ -481,8 +483,13 @@ public class DataConverter {
 					for(int s1 = 0 ; s1 < productList.size(); s1++ ){
 						if(productList.get(s1).getProductCode().equals(ticketCode)){
 							ArrayList<Passenger> passengerList = new ArrayList<Passenger>();
-							Ticket productReplace;
-							productReplace = (Ticket) productList.get(s1);
+							Ticket productReplace = null;
+							if(productList.get(s1).getType().equals("TS")){
+								productReplace = (StandardTickets) productList.get(s1).makeCopy();}
+							else if(productList.get(s1).getType().equals("TO")){
+								productReplace = (OffSeasonTickets) productList.get(s1).makeCopy();}
+							else if(productList.get(s1).getType().equals("TA")){
+								productReplace = (AwardTickets) productList.get(s1).makeCopy();}
 							productReplace.setTicketCode(ticket[0]);
 							productReplace.setTravelDate(ticket[1]);
 							productReplace.setType(productList.get(s1).getType());
@@ -518,7 +525,7 @@ public class DataConverter {
 				else if(eachPartOfProduct.length==2){
 					String checkedBaggage[]=stringProduct[a].split(":");//In this checked baggage will include checked baggage and refreshment
 					String productCode = checkedBaggage[0];
-					
+
 					for(int s1 = 0 ; s1 < productList.size(); s1++ ){
 						if(productList.get(s1).getProductCode().equals(productCode) && checkedBaggage[1].length()==1){
 							int quantity = Integer.parseInt(checkedBaggage[1]);
@@ -546,7 +553,7 @@ public class DataConverter {
 					}
 				}				
 			}
-	
+
 			String PNR = StandardUtils.generatePNR();
 			Invoice invoice = new Invoice(invoiceCode, invoiceDate, PNR,
 					listOfTicket, customer,

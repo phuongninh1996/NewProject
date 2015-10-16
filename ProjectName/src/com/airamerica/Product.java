@@ -39,4 +39,8 @@ public abstract class Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	public Product makeCopy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

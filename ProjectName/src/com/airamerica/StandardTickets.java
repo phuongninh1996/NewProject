@@ -16,6 +16,9 @@ public class StandardTickets extends Ticket {
 	super.setFlightClass(flightClass);
 	super.setAircraftType(aircraftType); 
 	}
+	public StandardTickets() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public double getTicketPrice(double distance) {
 		standardTicketPrice = super.getTicketPrice(distance);
@@ -43,6 +46,31 @@ public class StandardTickets extends Ticket {
 	public StandardTickets clone(String code, String type, AirPort departureAirport, AirPort arrivalAirport,String depTime,String arrTime,String flightNo,String flightClass,String aircraftType){
 		return new StandardTickets (this.getProductCode(), this.getType(),this.getDepartureAirport(), this.getArrivalAirport(), this.getDepTime(), this.getArrTime(), this.getFlightNumber(), this.getFlightClass(),this.getAircraftType()); 
 		}
+	@Override
+	public Product makeCopy()
+	{
+		Ticket t = new StandardTickets();
+		t.setArrivalAirport(super.getArrivalAirport());
+		t.setTicketCode(super.getTicketCode());
+		t.setTravelDate(super.getTravelDate());
+		t.setFlightClass(super.getFlightClass());
+		t.setDepartureAirport(super.getDepartureAirport());
+		t.setDateTime(super.getDateTime());
+		t.setDepTime(super.getDepTime());
+		t.setArrTime(super.getArrTime());
+		t.setFlightNumber(super.getFlightNumber());
+		t.setNumberOfPassenger(super.getNumberOfPassenger());
+		t.setArrivalAirport(super.getArrivalAirport());
+		t.setAircraftType(super.getAircraftType());
+		t.setListOfSeatNumber(super.getListOfSeatNumber());
+		t.setListOfPassengers(super.getListOfPassengers());
+		t.setTicketNote(super.getTicketCode());
+		t.setPersonCode(super.getPersonCode());
+		t.setIdentity(super.getIdentity());
+		t.setNationality(super.getIdentity());
+		t.setTicketPrice(super.getTicketPrice());
+		return t;
+	}
 }
 
 

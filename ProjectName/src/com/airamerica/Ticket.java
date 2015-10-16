@@ -3,7 +3,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
 import com.airamerica.AirPort;
+
 import org.joda.time.DateTime;
 
 public abstract class Ticket extends Product {
@@ -136,21 +138,21 @@ public abstract class Ticket extends Product {
 
 	
 	
-/*	public Ticket(String travelDate, String flightClass, AirPort departureCity, DateTime dateTime,
-			AirPort arrivalCity, String aircraftType, String arrivalDateTime, String listOfSeatNumber,     
+	/*public void makeTicket(String travelDate, String flightClass, AirPort departureCity, DateTime dateTime,
+			AirPort arrivalCity, String aircraftType, String arrivalDateTime, String[] listOfSeatNumber,     
 			Passenger listOfPassenger, String ticketNote){
 		this.travelDate= travelDate  ;
 		this.flightClass = flightClass ;
-		this.departureCity= departureCity ;
+		this.departureAirport= departureCity ;
 		this.dateTime= dateTime ;
-		this.arrivalCity= arrivalCity;
+		this.arrivalAirport= arrivalCity;
 		this.aircraftType= aircraftType;
-		this.arrivalDateTime = arrivalDateTime;
+		this.arrTime = arrivalDateTime;
 		this.listOfSeatNumber= listOfSeatNumber;
 		this.listOfPassengers= listOfPassenger;
 		this.ticketNote= ticketNote;
 		
-	} */
+	}*/ 
 	
 	
 	
@@ -187,11 +189,20 @@ public abstract class Ticket extends Product {
 	}
     return date2;
 	}
+	
 	public double printPrice(){
-		return ticketPrice;
+		return getTicketPrice();
 	}
 	public abstract int getAwardMile(double distance);
 	public abstract double getRebate();
 	public abstract double getTax();
 	public abstract double Total();
+	public double getTicketPrice() {
+		return ticketPrice;
+	}
+	public void setTicketPrice(double ticketPrice) {
+		this.ticketPrice = ticketPrice;
+	}
+	
+
 }
