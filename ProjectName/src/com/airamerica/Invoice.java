@@ -11,6 +11,52 @@ public class Invoice {
 	private Person Salesperson;
 	private String InvoiceCode;
 	private ArrayList<Services> ListOfService;
+	private double subTotal;
+	private double Fees ;
+	private double Taxes ;
+	private double discount ;
+	private double Total;
+	
+
+	public double getSubTotal() {
+		return subTotal;
+	}
+
+	public void setSubTotal(double subTotal) {
+		this.subTotal = subTotal;
+	}
+
+	public double getFees() {
+		return Fees;
+	}
+
+	public void setFees(double fees) {
+		Fees = fees;
+	}
+
+	public double getTaxes() {
+		return Taxes;
+	}
+
+	public void setTaxes(double taxes) {
+		Taxes = taxes;
+	}
+
+	public double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(double discount) {
+		this.discount = discount;
+	}
+
+	public double getTotal() {
+		return Total;
+	}
+
+	public void setTotal(double total) {
+		Total = total;
+	}
 
 	public Invoice(String code, String date, String PNR,
 			ArrayList<Product> listOfTickets, Customer customer,

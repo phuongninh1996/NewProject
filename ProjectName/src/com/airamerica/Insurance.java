@@ -8,9 +8,12 @@ public class Insurance extends Services {
 	private String ticketCode;
 	private double insurancePrice;
 	private double insuranceTax;
-	
-
+	String code;
+	String type;
+	public Insurance(){};
 	public Insurance(String code, String type, String name, String ageClass, double costPerMiles){
+		this.code = code;
+		this. type = type;
 		setProductCode(code);
 		setType(type);
 		this.name =name;
@@ -97,5 +100,25 @@ public class Insurance extends Services {
 	public double Total() {
 		return insuranceTax + insurancePrice;
 	}
-}	
+	public Product makeCopy()
+	{
+		
+		Insurance t = new Insurance();
+		t.setProductCode(code);
+		t.setType(type);
+		t.code= this.code;
+		t.type =this.type;
+		t.name= this.name;
+		t.ageClass= this.ageClass;
+		t.costPerMile= this.costPerMile;
+		t.quantity= this.quantity;
+		t.ticketCode= this.ticketCode;
+		t.insurancePrice= this.insurancePrice;
+		t.insuranceTax = this.insuranceTax;
+		return t;
+	}
+}
+		
+
+	
 

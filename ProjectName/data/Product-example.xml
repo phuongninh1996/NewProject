@@ -2,7 +2,7 @@
 <insurance>
 <com.airamerica.Insurance>
   <productCode>ff23</productCode>
-  <type>SI</type>
+  <type defined-in="product">SI</type>
   <distance>0.0</distance>
   <quantity defined-in="product">0</quantity>
   <quantity defined-in="com.airamerica.Services">0</quantity>
@@ -12,6 +12,8 @@
   <quantity>0</quantity>
   <insurancePrice>0.0</insurancePrice>
   <insuranceTax>0.0</insuranceTax>
+  <code>ff23</code>
+  <type>SI</type>
 </com.airamerica.Insurance></insurance>
 <standardTicket>
 <com.airamerica.StandardTickets>
@@ -222,7 +224,7 @@
 <insurance>
 <com.airamerica.Insurance>
   <productCode>ff25</productCode>
-  <type>SI</type>
+  <type defined-in="product">SI</type>
   <distance>0.0</distance>
   <quantity defined-in="product">0</quantity>
   <quantity defined-in="com.airamerica.Services">0</quantity>
@@ -232,6 +234,8 @@
   <quantity>0</quantity>
   <insurancePrice>0.0</insurancePrice>
   <insuranceTax>0.0</insuranceTax>
+  <code>ff25</code>
+  <type>SI</type>
 </com.airamerica.Insurance></insurance>
 <offSeasonTicket>
 <com.airamerica.OffSeasonTickets>
@@ -547,7 +551,7 @@
 <insurance>
 <com.airamerica.Insurance>
   <productCode>ff24</productCode>
-  <type>SI</type>
+  <type defined-in="product">SI</type>
   <distance>0.0</distance>
   <quantity defined-in="product">0</quantity>
   <quantity defined-in="com.airamerica.Services">0</quantity>
@@ -557,6 +561,8 @@
   <quantity>0</quantity>
   <insurancePrice>0.0</insurancePrice>
   <insuranceTax>0.0</insuranceTax>
+  <code>ff24</code>
+  <type>SI</type>
 </com.airamerica.Insurance></insurance>
 <offSeasonTicket>
 <com.airamerica.OffSeasonTickets>
@@ -657,7 +663,7 @@
 <insurance>
 <com.airamerica.Insurance>
   <productCode>fg23</productCode>
-  <type>SI</type>
+  <type defined-in="product">SI</type>
   <distance>0.0</distance>
   <quantity defined-in="product">0</quantity>
   <quantity defined-in="com.airamerica.Services">0</quantity>
@@ -667,11 +673,13 @@
   <quantity>0</quantity>
   <insurancePrice>0.0</insurancePrice>
   <insuranceTax>0.0</insuranceTax>
+  <code>fg23</code>
+  <type>SI</type>
 </com.airamerica.Insurance></insurance>
 <insurance>
 <com.airamerica.Insurance>
   <productCode>fh23</productCode>
-  <type>SI</type>
+  <type defined-in="product">SI</type>
   <distance>0.0</distance>
   <quantity defined-in="product">0</quantity>
   <quantity defined-in="com.airamerica.Services">0</quantity>
@@ -681,6 +689,8 @@
   <quantity>0</quantity>
   <insurancePrice>0.0</insurancePrice>
   <insuranceTax>0.0</insuranceTax>
+  <code>fh23</code>
+  <type>SI</type>
 </com.airamerica.Insurance></insurance>
 <checkedbagage>
 <com.airamerica.CheckedBagage>

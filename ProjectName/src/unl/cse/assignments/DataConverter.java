@@ -544,11 +544,12 @@ public class DataConverter {
 					String productCodeInsurance = insuranceArray[0];
 					for(int s1 = 0 ; s1 < productList.size(); s1++ ){
 						if(productList.get(s1).getProductCode().equals(productCodeInsurance)){
+							Insurance insuranceReplace = (Insurance)productList.get(s1).makeCopy();
 							int quantity = Integer.parseInt(insuranceArray[1]);
-							((Insurance)productList.get(s1)).setQuantity(quantity);
+							insuranceReplace.setQuantity(quantity);
 							String ticketCodeInsurance = insuranceArray[2]; 
-							((Insurance)productList.get(s1)).setTicketCode(ticketCodeInsurance);
-							listOfService.add((Services) productList.get(s1));
+							insuranceReplace.setTicketCode(ticketCodeInsurance);
+							listOfService.add(insuranceReplace);
 						}
 					}
 				}				
