@@ -92,7 +92,9 @@ public class OffSeasonTickets extends Ticket{
 		}
 	public Product makeCopy()
 	{
+		
 		OffSeasonTickets t = new OffSeasonTickets();
+		t.rebate = this.rebate;
 		t.seasonEndDate = this.seasonEndDate;
 		t.seasonStartDate  = this.seasonStartDate;
 		t.setArrivalAirport(super.getArrivalAirport());

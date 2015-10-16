@@ -126,6 +126,13 @@ public class InvoiceReport {
 		sb.append(String.format("%-10s %-75s %10s %10s %10s\n", "Code","Item","SubTotal","Tax","Total"));
 		Ticket ticket = null;
 		double ticketPrice = 0;
+		double subServiceTotal = 0; 
+		double totalTax = 0;
+		double totalSum = 0;
+		double discount;
+		double AditionalFee;
+		double TOTAL;
+		
 		for (int j = 0; j < invoice.getListOfTickets().size(); j++){
 			ticket = (Ticket) invoice.getListOfTickets().get(j);
 			double distance = ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
@@ -144,6 +151,7 @@ public class InvoiceReport {
 				sb.append(String.format("%-10s %-75s %.2f%s off %10s %.2f %10s %.2f %10s %.2f\n",ticket.getTicketCode(),"OffSeasonTicket ("+ticket.getFlightClass() +") "
 						+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
 						+" ("+distance+" miles)",ticket.getRebate(),"%", "$",ticketPrice,"$",tax,"$",total));
+				System.out.println("REBATE PRICE: "+ticket.getRebate() );
 				sb.append(String.format("           (%d units @ $%.2f/units with $20.00 fee)\n",ticket.getNumberOfPassenger(),ticketUnitPrice));
 			}
 			if(ticket.getType().equals("TA")){
@@ -152,6 +160,9 @@ public class InvoiceReport {
 						+" ("+distance+" miles)","$",ticketPrice,"$",tax,"$",total));
 				sb.append((String.format("           (%d units @ %d reward miles/unit with $30.0 ReedemptionFee)\n",ticket.getNumberOfPassenger(),ticket.getAwardMile(distance))));
 			}
+			subServiceTotal =  subServiceTotal + ticketPrice;
+			totalTax = totalTax+ tax;
+			totalSum = totalSum + total;
 		}
 		for(int z =0 ; z< invoice.getListOfService().size(); z++){
 			double distance = ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
@@ -183,8 +194,15 @@ public class InvoiceReport {
 					ticket.getListOfPassengers().get(j).getLastName(), serviceName,")","$",servicePrice,"$",taxes,"$",total));
 				}
 			}
+			subServiceTotal =  subServiceTotal + servicePrice;
+			totalTax = totalTax+ taxes;
+			totalSum = totalSum + total;
+			
 		}
+		
 		sb.append(String.format("%125s", "=====================================\n"));
+		sb.append(String.format("%-85s %-10f %-10f %-10f\n", "SUB-TOTALS", subServiceTotal, totalTax, totalSum));
+		
 		return sb.toString();
 	}
 

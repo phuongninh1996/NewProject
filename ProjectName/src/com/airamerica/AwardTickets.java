@@ -61,7 +61,8 @@ public AwardTickets() {
 	}
 	public Product makeCopy()
 	{
-		Ticket t = new AwardTickets();
+		AwardTickets t = new AwardTickets();
+		t.pointsPerMile = this. pointsPerMile;
 		t.setArrivalAirport(super.getArrivalAirport());
 		t.setTicketCode(super.getTicketCode());
 		t.setTravelDate(super.getTravelDate());
