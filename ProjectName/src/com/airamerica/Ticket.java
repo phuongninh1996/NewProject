@@ -38,6 +38,7 @@ public abstract class Ticket extends Product {
 	}
 
 	private String seatNumber;
+	//public String seasonStartDate;
 	public String getDepTime() {
 		return depTime;
 	}

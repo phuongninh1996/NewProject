@@ -16,7 +16,7 @@ public class OffSeasonTickets extends Ticket{
 	public OffSeasonTickets(String code, String type, String seasonStartDate, String seasonEndDate,  AirPort departureAirport, AirPort arrivalAirport,String depTime,String arrTime,String flightNo,String flightClass,String aircraftType,double rebate){
 	setProductCode(code);
 	setType(type);
-	this.seasonStartDate =seasonStartDate;
+	this.seasonStartDate = seasonStartDate;
 	this.seasonEndDate=seasonEndDate;
 	this.rebate = rebate;
 	super.setDepartureAirport(departureAirport);
@@ -61,7 +61,8 @@ public class OffSeasonTickets extends Ticket{
 		this.rebate = rebate;
 	}
 	@Override
-	public double getTicketPrice(double distance){
+	public double getTicketPrice(double distance){		
+		
 		if(super.convertDate(super.getTravelDate()).before(super.convertDate(seasonStartDate)) || 
 		   super.convertDate(super.getTravelDate()).after(super.convertDate(seasonEndDate))){
 			offseasonTicketPrice = super.getTicketPrice(distance) + 20.00;
@@ -91,7 +92,9 @@ public class OffSeasonTickets extends Ticket{
 		}
 	public Product makeCopy()
 	{
-		Ticket t = new OffSeasonTickets();
+		OffSeasonTickets t = new OffSeasonTickets();
+		t.seasonEndDate = this.seasonEndDate;
+		t.seasonStartDate  = this.seasonStartDate;
 		t.setArrivalAirport(super.getArrivalAirport());
 		t.setTicketCode(super.getTicketCode());
 		t.setTravelDate(super.getTravelDate());
