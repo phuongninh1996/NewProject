@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import jdk.internal.org.objectweb.asm.tree.InsnList;
+
 import com.airamerica.Customer;
 import com.airamerica.Invoice;
 import com.airamerica.Ticket;
@@ -22,6 +24,13 @@ public class InvoiceReport {
 		sb.append("Executive Summary Report\n");
 		sb.append("=========================\n");
 		//TODO: Add code for generating summary of all Invoices
+		sb.append(String.format("%-10s %-50s %-10s %10s %10s %10s %10s %10s\n", "Invoice","Customer","SalesPerson","Subtotals","Fee","Taxes","Discount","Total"));
+		for(int z =0; z< DataConverter.invoiceList.size(); z++){
+			Invoice invoice =  DataConverter.invoiceList.get(z);
+			
+			
+			
+		}
 		return sb.toString();
 	}
 
