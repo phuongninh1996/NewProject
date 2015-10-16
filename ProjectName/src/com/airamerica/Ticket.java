@@ -6,8 +6,6 @@ import java.util.Date;
 import com.airamerica.AirPort;
 import org.joda.time.DateTime;
 
-import com.airamerica.utils.Haversine;
-
 public abstract class Ticket extends Product {
 	private String ticketCode;
 	private String travelDate;

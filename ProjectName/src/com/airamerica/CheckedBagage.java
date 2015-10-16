@@ -24,7 +24,7 @@ public class CheckedBagage extends Services {
 		this.quantityBagage = quantityBaggage;
 	}
 	@Override
-	public double getServicesPrice() {
+	public double getServicesPrice(double distance) {
 		if(quantityBagage == 1){
 			checkBagagePrice = 25.00;
 			return checkBagagePrice;
@@ -38,11 +38,6 @@ public class CheckedBagage extends Services {
 	public String getServicesName() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	@Override
-	public double getInsurancePrice(double distance) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 	@Override
 	public double getCost() {

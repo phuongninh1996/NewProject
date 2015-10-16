@@ -34,7 +34,7 @@ public class Refreshment extends Services {
 	public void setCost(double cost) {
 		this.cost = cost;
 	}
-	public double getServicesPrice(){
+	public double getServicesPrice(double distance){
 		refreshmentPrice = (super.getQuantity() * cost)-((super.getQuantity() * cost)*0.05);
 		return refreshmentPrice;
 	}
@@ -42,12 +42,6 @@ public class Refreshment extends Services {
 	@Override
 	public String getServicesName() {
 		return name;
-	}
-
-	@Override
-	public double getInsurancePrice(double distance) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override

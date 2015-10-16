@@ -11,16 +11,12 @@ public class SpecialAssistance extends Services {
 		return typeofService;
 	}
 	@Override
-	public double getServicesPrice() {
+	public double getServicesPrice(double distance) {
 		return 0;
 	}
 	@Override
 	public String getServicesName() {
 		return typeofService;
-	}
-	@Override
-	public double getInsurancePrice(double distance) {
-		return 0;
 	}
 	@Override
 	public double getCost() {

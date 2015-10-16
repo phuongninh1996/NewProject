@@ -14,14 +14,13 @@ public class OffSeasonTickets extends Ticket{
 	
 //Constructor	
 	public OffSeasonTickets(String code, String type, String seasonStartDate, String seasonEndDate,  AirPort departureAirport, AirPort arrivalAirport,String depTime,String arrTime,String flightNo,String flightClass,String aircraftType,double rebate){
-	
 	setProductCode(code);
 	setType(type);
 	this.seasonStartDate =seasonStartDate;
 	this.seasonEndDate=seasonEndDate;
 	this.rebate = rebate;
 	super.setDepartureAirport(departureAirport);
-	this.setArrivalAirport(arrivalAirport); 
+	setArrivalAirport(arrivalAirport); 
 	super.setDepTime(depTime);
 	super.setArrTime(arrTime);
 	super.setFlightNumber(flightNo);
@@ -83,5 +82,8 @@ public class OffSeasonTickets extends Ticket{
 	public double Total() {
 		return offseasonTicketTax + offseasonTicketPrice;
 	}
+	public OffSeasonTickets clone(String code, String type, String seasonStartDate, String seasonEndDate,  AirPort departureAirport, AirPort arrivalAirport,String depTime,String arrTime,String flightNo,String flightClass,String aircraftType,double rebate){
+		return new OffSeasonTickets (this.getProductCode(), this.getType(), this.seasonStartDate, this.seasonEndDate, this.getDepartureAirport(), this.getArrivalAirport(), this.getDepTime(), this.getArrTime(), this.getFlightNumber(), this.getFlightClass(),this.getAircraftType(), this.rebate); 
+		}
 }
 

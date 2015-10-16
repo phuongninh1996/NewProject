@@ -20,10 +20,9 @@ public abstract class Services extends Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public abstract double getServicesPrice();
+	public abstract double getServicesPrice(double distance);
 	public abstract String getServicesName();
 	public abstract double getCost();
-	public abstract double getInsurancePrice (double disance);
 	public abstract double getTaxes();
 	public abstract double Total();
 	public abstract String getAge();

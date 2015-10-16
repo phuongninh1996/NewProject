@@ -40,6 +40,9 @@ public class StandardTickets extends Ticket {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	public StandardTickets clone(String code, String type, AirPort departureAirport, AirPort arrivalAirport,String depTime,String arrTime,String flightNo,String flightClass,String aircraftType){
+		return new StandardTickets (this.getProductCode(), this.getType(),this.getDepartureAirport(), this.getArrivalAirport(), this.getDepTime(), this.getArrTime(), this.getFlightNumber(), this.getFlightClass(),this.getAircraftType()); 
+		}
 }
 
 

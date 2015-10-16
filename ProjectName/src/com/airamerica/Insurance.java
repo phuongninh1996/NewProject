@@ -57,16 +57,12 @@ public class Insurance extends Services {
 		this.ticketCode = ticketCode;
 	}
 	@Override
-	public double getServicesPrice() {
-		return 0;
-	}
-	@Override
 	public String getServicesName() { 
 		return name;
 	}
 
 	@Override
-	public double getInsurancePrice(double distance) {
+	public double getServicesPrice(double distance) {
 		insurancePrice = costPerMile * quantity * distance;
 		return insurancePrice;
 	}

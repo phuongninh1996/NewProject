@@ -116,11 +116,12 @@ public class InvoiceReport {
 		sb.append("FARES AND SERVICES\n");
 		sb.append(String.format("%-10s %-75s %10s %10s %10s\n", "Code","Item","SubTotal","Tax","Total"));
 		Ticket ticket = null;
+		double ticketPrice = 0;
 		for (int j = 0; j < invoice.getListOfTickets().size(); j++){
 			ticket = (Ticket) invoice.getListOfTickets().get(j);
 			double distance = ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
 			double ticketUnitPrice = ticket.getTicketPrice(ticket.getDistance())/ticket.getNumberOfPassenger();
-			double ticketPrice = ticket.getTicketPrice(ticket.getDistance());
+			ticketPrice = ticket.getTicketPrice(ticket.getDistance());
 			double tax = ticket.getTax() + (ticket.getArrivalAirport().getPassengerFacilityFee()*ticket.getNumberOfPassenger());
 			double total = ticket.Total() + (ticket.getArrivalAirport().getPassengerFacilityFee()*ticket.getNumberOfPassenger());
 			if(ticket.getType().equals("TS")){
@@ -148,7 +149,7 @@ public class InvoiceReport {
 			String temp = invoice.getListOfService().get(z).getServiceType();
 			String code = invoice.getListOfService().get(z).getProductCode();
 			int quantity = invoice.getListOfService().get(z).getQuantity();
-			double servicePrice = invoice.getListOfService().get(z).getServicesPrice();
+			double servicePrice = invoice.getListOfService().get(z).getServicesPrice(distance);
 			String serviceName = invoice.getListOfService().get(z).getServicesName();
 			double taxes = invoice.getListOfService().get(z).getTaxes();
 			double total = invoice.getListOfService().get(z).Total();
@@ -162,7 +163,7 @@ public class InvoiceReport {
 			}
 			if (temp.equals("SI")){
 				sb.append(String.format("%-10s Insurance %s (%s) %s %.2f %s %.2f %s %.2f\n",code, serviceName,invoice.getListOfService().get(z).getAge()
-						,"$",invoice.getListOfService().get(z).getInsurancePrice(distance),"$",taxes,"$",total));
+						,"$",servicePrice,"$",taxes,"$",total));
 				sb.append(String.format("           (%d units @ %.2f perMile x %.2f miles)\n", quantity, invoice.getListOfService().get(z).costPerMile(), ticket.getDistance()));
 			}
 			for(int j = 0; j < ticket.getListOfPassengers().size(); j++){
