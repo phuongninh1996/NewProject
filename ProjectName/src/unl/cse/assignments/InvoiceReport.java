@@ -20,13 +20,10 @@ import com.airamerica.Ticket;
 
 
 public class InvoiceReport {
-	double[] subTotal = new double[4];
-	double [] Fees = new double[4];
-	double [] Taxes = new double[4];
-	double [] discount = new double[4];
-	double [] Total = new double[4];
-	int i = 0;
+	 int i = 0;
+
 	private String generateSummaryReport() {
+
 		StringBuilder sb = new StringBuilder();
 		sb.append("Executive Summary Report\n");
 		sb.append("=========================\n");
@@ -35,6 +32,8 @@ public class InvoiceReport {
 		for(int z =0; z< DataConverter.invoiceList.size(); z++){
 			String salePerson = null;
 			Invoice invoice =  DataConverter.invoiceList.get(z);
+			invoice.calculating();
+
 
 			if (invoice.getSalesperson() == null){
 				salePerson = "Online";
@@ -43,7 +42,7 @@ public class InvoiceReport {
 				salePerson= invoice.getSalesperson().getLastName() + ","+invoice.getSalesperson().getFirstName(); 
 			}
 			sb.append(String.format("%-10s %-50s %-10s %10s %10s %10s %10s %10s\n", invoice.getInvoiceCode(),invoice.getCustomer().getName() +"(" +invoice.getCustomer().getType()+ ")", salePerson
-							, subTotal[i], Fees[i], invoice.getTaxes(), invoice.getDiscount(), invoice.getTotal()));
+							, invoice.getSubTotal(), invoice.getFees(), invoice.getTaxes(), invoice.getDiscount(), invoice.getTOTAL()));
 			
 			
 			
@@ -124,7 +123,6 @@ public class InvoiceReport {
 						   +customer.getPrimaryContact().getAddress().getState()+" "
 						   +customer.getPrimaryContact().getAddress().getZip()+" "
 						   +customer.getPrimaryContact().getAddress().getCountry()+"\n");
-		//System.out.println(invoice.getSalesperson().getFirstName());
 		if (invoice.getSalesperson() != null){
 		sb.append("Salesperson: "+invoice.getSalesperson().getFirstName()+", "+invoice.getSalesperson().getLastName()+"\n");
 		}
@@ -143,32 +141,27 @@ public class InvoiceReport {
 		sb.append(String.format("%-10s %-75s %10s %10s %10s\n", "Code","Item","SubTotal","Tax","Total"));
 		Ticket ticket = null;
 		double ticketPrice = 0;
-		double subServiceTotal = 0; 
-		double totalTax = 0;
-		double totalSum = 0;
-		double discount = 0;
-		double AditionalFee= 0 ;
-		double TOTAL = 0;
-		
 		for (int j = 0; j < invoice.getListOfTickets().size(); j++){
 			ticket = (Ticket) invoice.getListOfTickets().get(j);
 			double distance = ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
 			double ticketUnitPrice = ticket.getTicketPrice(ticket.getDistance())/ticket.getNumberOfPassenger();
 			ticketPrice = ticket.getTicketPrice(ticket.getDistance());
+			
+			
 			double tax = ticket.getTax() + (ticket.getArrivalAirport().getPassengerFacilityFee()*ticket.getNumberOfPassenger());
 			double total = ticket.Total() + (ticket.getArrivalAirport().getPassengerFacilityFee()*ticket.getNumberOfPassenger());
 			if(ticket.getType().equals("TS")){
 				sb.append(String.format("%-10s %-69s %9s %.2f %9s %.2f %9s %.2f\n",ticket.getTicketCode(),"StandardTicket ("+ticket.getFlightClass() +") "
 						+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
 						+" ("+distance+" miles)","$",ticketPrice,"$",tax,"$",total));
-				sb.append(String.format("           (%d units @ $%.2f/units)\n",ticket.getNumberOfPassenger(),ticketUnitPrice));
+				sb.append(String.format("(%d units @ $%.2f/units)\n",ticket.getNumberOfPassenger(),ticketUnitPrice));
 				
 			}
 			if(ticket.getType().equals("TO")){
 				sb.append(String.format("%-10s %-69s %.2f%s off %9s %.2f %9s %.2f %9s %.2f\n",ticket.getTicketCode(),"OffSeasonTicket ("+ticket.getFlightClass() +") "
 						+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
 						+" ("+distance+" miles)",ticket.getRebate(),"%", "$",ticketPrice,"$",tax,"$",total));
-				System.out.println("REBATE PRICE: "+ticket.getRebate() );
+				
 				sb.append(String.format("           (%d units @ $%.2f/units with $20.00 fee)\n",ticket.getNumberOfPassenger(),ticketUnitPrice));
 			}
 			if(ticket.getType().equals("TA")){
@@ -177,9 +170,7 @@ public class InvoiceReport {
 						+" ("+distance+" miles)","$",ticketPrice,"$",tax,"$",total));
 				sb.append((String.format("           (%d units @ %d reward miles/unit with $30.0 ReedemptionFee)\n",ticket.getNumberOfPassenger(),ticket.getAwardMile(distance))));
 			}
-			subServiceTotal =  subServiceTotal + ticketPrice;
-			totalTax = totalTax+ tax;
-			totalSum = totalSum + total;
+
 		}
 		for(int z =0 ; z< invoice.getListOfService().size(); z++){
 			double distance = ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
@@ -211,31 +202,40 @@ public class InvoiceReport {
 					ticket.getListOfPassengers().get(j).getLastName(), serviceName,")","$",servicePrice,"$",taxes,"$",total));
 				}
 			}
-			subServiceTotal =  subServiceTotal + servicePrice;
-			totalTax = totalTax+ taxes;
-			totalSum = totalSum + total;
-			discount = 0;			
-			
+
 			
 		}
-		subTotal[i] = subServiceTotal;
-		DataConverter.invoiceList.get(i).setSubTotal(subServiceTotal);
-	
-		Fees[i] = totalTax;
-		DataConverter.invoiceList.get(i).setTaxes(totalTax);
-		DataConverter.invoiceList.get(i).setDiscount(discount);
-		//Taxes[i] = new double[4];
-		//discount[i] = new double[4];
-		//Total[i] = new double[4];
+			
+
+		
 		
 		
 		sb.append(String.format("%125s", "=====================================\n"));
-		sb.append(String.format("%-85s %-10f %-10f %-10f\n", "SUB-TOTALS", subServiceTotal, totalTax, totalSum));
-		
+		sb.append(String.format("%-85s %-10f %-10f %-10f\n", "SUB-TOTALS", invoice.getSubTotal(), invoice.getTaxes(), invoice.getTotal()));
+		if (invoice.getCustomer().getType().equals("V")){
+			sb.append(String.format("%-105s  %-10f\n", "DISCOUNT (NO TAX)", invoice.getTaxes()));
+			sb.append(String.format("%-105s  %-10f\n", "ADDITIONAL FEE", invoice.getFees()));
+			sb.append(String.format("%-105s  %-10f\n", "TOTAL", invoice.getTOTAL()));
+
+		}
+		if (invoice.getCustomer().getType().equals("G")){
+			sb.append(String.format("%-105s  %-10f\n", "DISCOUNT (NONE)", invoice.getDiscount()));
+			sb.append(String.format("%-105s  %-10f\n", "ADDITIONAL FEE", invoice.getFees()));
+			sb.append(String.format("%-105s  %-10f\n", "TOTAL", invoice.getTOTAL()));
+
+		}
+		else if (invoice.getCustomer().getType().equals("C")){
+			sb.append(String.format("%-105s  %-10f\n", "DISCOUNT (12.00% of SUBTOTAL)",  invoice.getDiscount() ));
+			sb.append(String.format("%-105s  %-10f\n", "ADDITIONAL FEE",invoice.getFees() ));
+			sb.append(String.format("%-105s  %-10f\n", "TOTAL",invoice.getTOTAL()));
+
+		}
 		return sb.toString();
 	}
 
 	public String generateDetailReport(ArrayList<Invoice> invoiceList ) {
+
+		
 	StringBuilder sb = new StringBuilder();		
 	sb.append("Individual Invoice Detail Reports\n");
 	sb.append("==================================================\n");

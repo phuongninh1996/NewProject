@@ -16,15 +16,8 @@ public class Invoice {
 	private double Taxes ;
 	private double discount ;
 	private double Total;
-	
+	private double TOTAL;
 
-	public double getSubTotal() {
-		return subTotal;
-	}
-
-	public void setSubTotal(double subTotal) {
-		this.subTotal = subTotal;
-	}
 
 	public double getFees() {
 		return Fees;
@@ -125,4 +118,67 @@ public class Invoice {
 	public void setListOfService(ArrayList<Services> listOfService) {
 		ListOfService = listOfService;
 	}
+	public void calculating(){
+		Ticket ticket = null;
+		subTotal = 0;
+		double ticketPrice;
+		for (int j = 0; j < this.ListOfTickets.size(); j++){
+			ticket = (Ticket) this.ListOfTickets.get(j);
+			double distance = ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
+			ticketPrice = ticket.getTicketPrice(ticket.getDistance());
+
+			double tax = ticket.getTax() + (ticket.getArrivalAirport().getPassengerFacilityFee()*ticket.getNumberOfPassenger());
+			double total = ticket.Total() + (ticket.getArrivalAirport().getPassengerFacilityFee()*ticket.getNumberOfPassenger());
+			subTotal =  subTotal + ticketPrice;
+			System.out.println("HELLO  "  + ticketPrice );
+			Taxes = Taxes+ tax;
+			Total = Total + total;
+		}
+		for(int z =0 ; z< this.ListOfService.size(); z++){
+			double distance = ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
+			double servicePrice = this.ListOfService.get(z).getServicesPrice(distance);
+			double tax = this.getListOfService().get(z).getTaxes();
+			double total = this.getListOfService().get(z).Total();
+			subTotal =  subTotal + servicePrice;
+			Taxes = Taxes+ tax;
+			Total = Total + total;
+
+		}
+		if (this.getCustomer().getType().equals("V")){
+			discount = Taxes;
+			TOTAL = subTotal + Taxes  + Fees -  discount; 
+
+		}
+		else if (this.getCustomer().getType().equals("G")){
+			TOTAL = subTotal + Taxes + Fees -  discount; 
+		}
+		else if (this.getCustomer().getType().equals("C")){
+			discount = subTotal/100 *12;
+			Fees = 40;
+			TOTAL = subTotal + Taxes + Fees -  discount; 
+
+		}
+
+
+
+
+
+
 	}
+
+	public double getSubTotal() {
+		return subTotal;
+	}
+
+	public void setSubTotal(double subTotal) {
+		this.subTotal = subTotal;
+	}
+
+	public double getTOTAL() {
+		return TOTAL;
+	}
+
+	public void setTOTAL(double tOTAL) {
+		TOTAL = tOTAL;
+	}
+}
