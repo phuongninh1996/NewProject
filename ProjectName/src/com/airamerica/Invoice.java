@@ -125,12 +125,11 @@ public class Invoice {
 		for (int j = 0; j < this.ListOfTickets.size(); j++){
 			ticket = (Ticket) this.ListOfTickets.get(j);
 			double distance = ticket.airPortsDistance(ticket.getDepartureAirport(), ticket.getArrivalAirport());
-			ticketPrice = ticket.getTicketPrice(ticket.getDistance());
+			ticketPrice = ticket.getTicketPrice(distance);
 
 			double tax = ticket.getTax() + (ticket.getArrivalAirport().getPassengerFacilityFee()*ticket.getNumberOfPassenger());
 			double total = ticket.Total() + (ticket.getArrivalAirport().getPassengerFacilityFee()*ticket.getNumberOfPassenger());
 			subTotal =  subTotal + ticketPrice;
-			System.out.println("HELLO  "  + ticketPrice );
 			Taxes = Taxes+ tax;
 			Total = Total + total;
 		}
