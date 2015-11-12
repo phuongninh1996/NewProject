@@ -151,7 +151,7 @@ public class InvoiceReport {
 				sb.append(String.format("%-10s %-82s %s %-13.2f %s %-11.2f %s %.2f\n",ticket.getTicketCode(),"StandardTicket ("+ticket.getFlightClass() +") "
 						+ticket.getDepartureAirport().getAirportCode()+" to "+ticket.getArrivalAirport().getAirportCode()
 						+" ("+distance+" miles)","$",ticketPrice,"$",tax,"$",total));
-				sb.append(String.format("(%d units @ $%.2f/units)\n",ticket.getNumberOfPassenger(),ticketUnitPrice));
+				sb.append(String.format("           (%d units @ $%.2f/units)\n",ticket.getNumberOfPassenger(),ticketUnitPrice));
 				
 			}
 			if(ticket.getType().equals("TO")){
@@ -207,7 +207,7 @@ public class InvoiceReport {
 		
 		
 		
-		sb.append(String.format("%125s", "=====================================\n"));
+		sb.append(String.format("%134s", "=======================================\n"));
 		sb.append(String.format("%-93s %s %-13.2f %s %-11.2f %s %.2f\n", "SUB-TOTALS","$", invoice.getSubTotal(),"$", invoice.getTaxes(),"$", invoice.getTotal()));
 		if (invoice.getCustomer().getType().equals("V")){
 			sb.append(String.format("%-123s %s -%-10.2f\n", "DISCOUNT (NO TAX)","$", invoice.getTaxes()));
@@ -226,7 +226,7 @@ public class InvoiceReport {
 			sb.append(String.format("%-123s %s %-10.2f\n", "ADDITIONAL FEE","$",invoice.getFees() ));
 			sb.append(String.format("%-123s %s %-10.2f\n", "TOTAL","$",invoice.getTOTAL()));
 		}
-		sb.append("------------------------------------------------------------------------------------------------------------------------------------\n\n\n");
+		sb.append("-----------------------------------------------------------------------------------------------------------------------------------------\n\n\n");
 		return sb.toString();
 	}
 
